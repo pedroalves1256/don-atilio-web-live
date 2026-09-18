@@ -358,6 +358,16 @@
     background-repeat: no-repeat;
     background-color: #f4f1e8;
   }
+  .lote-head{
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 15px, var(--paper-line) 15px, var(--paper-line) 16px),
+      repeating-linear-gradient(90deg, transparent, transparent 15px, var(--paper-line) 15px, var(--paper-line) 16px),
+      var(--paper);
+    padding: 20px 20px 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px dashed var(--paper-line);
+  }
+  .lote-head .lote-zona{ margin-bottom: 0; }
   .lote-body{ padding: 0 20px; }
   .lote-card.reservado{ border-left-color: var(--soil); }
   .lote-card.vendido{ border-left-color: var(--ink-soft); opacity: 0.78; }
@@ -463,6 +473,116 @@
     display:none;
   }
 
+  /* ---------- PLANO DEL LOTEO ---------- */
+  .plano-hero{
+    grid-column: 1 / -1;
+    background: var(--white);
+    border: 1px solid var(--paper-line);
+    padding: 20px;
+    margin-bottom: 6px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .plano-hero-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .plano-hero-head h4{
+    font-family:'Zilla Slab', serif;
+    font-size: 16px;
+    font-weight:600;
+    color: var(--ink);
+  }
+  .plano-legend{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .plano-legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .plano-dot{ width:9px; height:9px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .plano-dot.disponible{ background: var(--field); }
+  .plano-dot.reservado{ background: var(--soil); }
+  .plano-dot.vendido{ background: var(--ink-soft); }
+
+  .plano-hero-img-btn{
+    position:relative;
+    display:block;
+    width:100%;
+    border:1px solid var(--paper-line);
+    background:#f4f1e8;
+    padding:0;
+    cursor: zoom-in;
+    overflow:hidden;
+    font: inherit;
+  }
+  .plano-hero-img-btn img{
+    display:block;
+    width:100%;
+    max-height: 480px;
+    object-fit: contain;
+    background:#f4f1e8;
+    transition: transform 0.3s ease;
+  }
+  .plano-hero-img-btn:hover img{ transform: scale(1.02); }
+  .plano-hero-zoom{
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background: rgba(29,43,58,0.85);
+    color: var(--white);
+    font-size:12px;
+    font-weight:600;
+    padding:7px 12px;
+    border-radius:20px;
+  }
+  .plano-hero-zoom svg{ width:14px; height:14px; }
+
+  /* ---------- LIGHTBOX DEL PLANO ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background: rgba(29,43,58,0.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding: 32px 20px;
+    z-index: 300;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:18px;
+    right:20px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background: rgba(255,255,255,0.14);
+    color: var(--white);
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lightbox-close:hover{ background: rgba(255,255,255,0.24); }
+
   /* ---------- FOOTER ---------- */
   footer{
     border-top: 1px solid var(--paper-line);
@@ -511,6 +631,8 @@
     .trust{ margin-top: 56px; }
     .proceso{ margin-top: 56px; }
     .wa-float{ width:48px; height:48px; right:14px; bottom:14px; }
+    .plano-hero-img-btn img{ max-height: 260px; }
+    .plano-hero-head{ flex-direction:column; align-items:flex-start; }
   }
   /* ---------- TRUST / POR QUE ELEGIRNOS ---------- */
   .trust{
@@ -890,6 +1012,11 @@
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.3 1.18-1.8 1.24-.46.06-1.04.08-1.68-.1-.39-.11-.89-.28-1.53-.55-2.7-1.17-4.46-3.9-4.6-4.08-.13-.18-1.1-1.46-1.1-2.79 0-1.32.7-1.97.94-2.24.24-.26.53-.33.7-.33h.5c.16 0 .38-.02.6.46.22.5.75 1.83.82 1.96.07.13.11.29.02.46-.34.68-.7.9-.85 1.06-.16.16-.32.34-.14.66.62 1.13 1.24 1.62 2.24 2.15.17.09.3.07.42-.05.14-.15.6-.7.77-.94.16-.24.32-.2.53-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2z"/></svg>
 </a>
 
+<div class="lightbox" id="plano-lightbox" role="dialog" aria-modal="true" aria-label="Plano ampliado">
+  <button type="button" class="lightbox-close" id="plano-lightbox-close" aria-label="Cerrar plano ampliado">&times;</button>
+  <img id="plano-lightbox-img" src="" alt="">
+</div>
+
 <script>
   // ---------------------------------------------------------------
   // CONFIGURÁ ACÁ TUS DATOS REALES
@@ -1012,6 +1139,45 @@
   ];
   document.getElementById('brand-logo').style.backgroundImage = `url('${LOGO_IMG}')`;
   const pinIconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>`;
+  const zoomIconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>`;
+
+  // --- Plano visual de cada loteo: se muestra una vez, grande y ampliable, arriba de las tarjetas ---
+  function planoHeroHTML(imgSrc, alt, label) {
+    return `
+    <div class="plano-hero">
+      <div class="plano-hero-head">
+        <h4>Plano de ${label}</h4>
+        <div class="plano-legend">
+          <span><i class="plano-dot disponible"></i>Disponible</span>
+          <span><i class="plano-dot reservado"></i>Reservado</span>
+          <span><i class="plano-dot vendido"></i>Vendido</span>
+        </div>
+      </div>
+      <button type="button" class="plano-hero-img-btn" data-plano-src="${imgSrc}" data-plano-alt="${alt}" aria-label="Ver plano de ${label} en tamaño grande">
+        <img src="${imgSrc}" alt="${alt}" loading="lazy">
+        <span class="plano-hero-zoom">${zoomIconSVG}Ver plano completo</span>
+      </button>
+    </div>`;
+  }
+
+  const planoLightbox = document.getElementById('plano-lightbox');
+  const planoLightboxImg = document.getElementById('plano-lightbox-img');
+  function openPlanoLightbox(src, alt) {
+    planoLightboxImg.src = src;
+    planoLightboxImg.alt = alt;
+    planoLightbox.classList.add('open');
+  }
+  function closePlanoLightbox() {
+    planoLightbox.classList.remove('open');
+    planoLightboxImg.src = '';
+  }
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.plano-hero-img-btn');
+    if (btn) openPlanoLightbox(btn.dataset.planoSrc, btn.dataset.planoAlt);
+  });
+  document.getElementById('plano-lightbox-close').addEventListener('click', closePlanoLightbox);
+  planoLightbox.addEventListener('click', (e) => { if (e.target === planoLightbox) closePlanoLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePlanoLightbox(); });
 
   document.querySelectorAll('#ig-link, #ig-link-2, #ig-link-3, #ig-link-4').forEach(el => el.href = INSTAGRAM_URL);
   document.getElementById('ig-link-2').textContent = ''; // usa "Consultar" con link a WhatsApp
@@ -1111,17 +1277,18 @@
   function renderDA2Historial() {
     const cont = document.getElementById('da2-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = lotes.map((l, index) => {
+    cont.innerHTML = planoHeroHTML(DA2_PHOTO, "Plano de Barrio Don Atilio 2", "Barrio Don Atilio 2") + lotes.map((l, index) => {
       return `
       <div class="lote-card vendido">
-        <div class="lote-photo plano" role="img" aria-label="Plano de Barrio Don Atilio 2" style="background-image:url('${DA2_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado vendido">VENDIDO</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion || l.zona}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-precio">Fracción vendida</div>
           <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar lotes similares</a>
         </div>
@@ -1157,7 +1324,7 @@
   function renderL9489() {
     const cont = document.getElementById('l9489-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = l9489Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L9489_PHOTO, "Plano del Loteo 9 y 489", "Loteo 9 y 489") + l9489Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">Fracción vendida</div>`
@@ -1170,14 +1337,15 @@
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
       return `
       <div class="lote-card${vendido ? ' vendido' : ''}">
-        <div class="lote-photo plano" role="img" aria-label="Plano del Loteo 9 y 489" style="background-image:url('${L9489_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado${vendido ? ' vendido' : ''}">${vendido ? 'VENDIDO' : 'DISPONIBLE'}</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-meta">
             <div>Superficie<span class="meta-val">${l.superficie}</span></div>
             <div>Frente<span class="meta-val">${l.frente}</span></div>
@@ -1199,16 +1367,17 @@
   function renderL10489() {
     const cont = document.getElementById('l10489-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = l10489Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L10489_PHOTO, "Plano del Loteo 10 y 489", "Loteo 10 y 489") + l10489Lotes.map(l => `
       <div class="lote-card vendido">
-        <div class="lote-photo plano" role="img" aria-label="Plano del Loteo 10 y 489" style="background-image:url('${L10489_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado vendido">VENDIDO</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-precio">Fracción vendida</div>
           <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar lotes similares</a>
         </div>
@@ -1233,16 +1402,17 @@
   function renderL4490() {
     const cont = document.getElementById('l4490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = l4490Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L4490_PHOTO, "Plano del Loteo 4 y 490", "Loteo 4 y 490") + l4490Lotes.map(l => `
       <div class="lote-card vendido">
-        <div class="lote-photo plano" role="img" aria-label="Plano del Loteo 4 y 490" style="background-image:url('${L4490_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado vendido">VENDIDO</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-meta">
             <div>Superficie<span class="meta-val">${l.superficie}</span></div>
             <div>Frente<span class="meta-val">${l.frente}</span></div>
@@ -1263,16 +1433,17 @@
   function renderL4502b() {
     const cont = document.getElementById('l4502b-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = l4502bLotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B") + l4502bLotes.map(l => `
       <div class="lote-card vendido">
-        <div class="lote-photo plano" role="img" aria-label="Plano del Loteo 4 y 502B" style="background-image:url('${L4502B_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado vendido">VENDIDO</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-precio">Fracción vendida</div>
           <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar lotes similares</a>
         </div>
@@ -1299,7 +1470,7 @@
   function renderDA3() {
     const cont = document.getElementById('da3-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = da3Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3") + da3Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">Fracción vendida</div>`
@@ -1312,14 +1483,15 @@
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
       return `
       <div class="lote-card${vendido ? ' vendido' : ''}">
-        <div class="lote-photo plano" role="img" aria-label="Plano de Barrio Don Atilio 3" style="background-image:url('${DA3_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado${vendido ? ' vendido' : ''}">${vendido ? 'VENDIDO' : 'DISPONIBLE'}</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           ${estadoHTML}
           <a class="whatsapp-btn" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">${waIconSVG}${ctaText}</a>
         </div>
@@ -1341,7 +1513,7 @@
   function renderLoteo5y490() {
     const cont = document.getElementById('l5490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = l5490Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L5490_PHOTO, "Plano del Loteo 5 y 490", "Loteo 5 y 490") + l5490Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">Fracción vendida</div>`
@@ -1354,14 +1526,15 @@
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
       return `
       <div class="lote-card${vendido ? ' vendido' : ''}">
-        <div class="lote-photo plano" role="img" aria-label="Plano del Loteo 5 y 490" style="background-image:url('${L5490_PHOTO}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
             <span class="lote-estado${vendido ? ' vendido' : ''}">${vendido ? 'VENDIDO' : 'DISPONIBLE'}</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           ${estadoHTML}
           <a class="whatsapp-btn" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">${waIconSVG}${ctaText}</a>
         </div>
@@ -1406,16 +1579,17 @@
   function renderHistorialDA1() {
     const cont = document.getElementById('da1-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = da1Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(CROQUIS_DA1, "Croquis del Barrio Don Atilio 1", "Barrio Don Atilio 1") + da1Lotes.map(l => `
       <div class="lote-card vendido">
-        <div class="lote-photo plano" role="img" aria-label="Croquis del Barrio Don Atilio 1" style="background-image:url('${CROQUIS_DA1}')"></div>
-        <div class="lote-body">
+        <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">LOTE ${l.numero}</div>
             <span class="lote-estado vendido">VENDIDO</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
+        </div>
+        <div class="lote-body">
           <div class="lote-precio">Fracción vendida</div>
           <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar lotes similares</a>
         </div>
