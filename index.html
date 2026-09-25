@@ -1210,7 +1210,7 @@
     emptyMsg.style.display = visibles.length ? "none" : "block";
 
     const estadoLabel = { disponible: 'DISPONIBLE', reservado: 'RESERVADO', vendido: 'VENDIDO' };
-    const ctaLabel = { disponible: 'Consultar por WhatsApp', reservado: 'Consultar por WhatsApp', vendido: 'Consultar por tu futuro lote' };
+    const ctaLabel = { disponible: 'Consultar por WhatsApp', reservado: 'Consultar por WhatsApp', vendido: 'Consultar por otros lotes' };
 
     visibles.forEach((l, index) => {
       const estado = l.estado || 'disponible';
@@ -1289,7 +1289,7 @@
         </div>
         <div class="lote-body">
           <div class="lote-precio">VENDIDO</div>
-          <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar por tu futuro lote</a>
+          <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar por otros lotes</a>
         </div>
       </div>`;
     }).join('');
@@ -1330,7 +1330,7 @@
         : `<div class="lote-precio-arrow" aria-label="Consultá el precio por WhatsApp" title="Consultá el precio por WhatsApp">
              <span>Precio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
            </div>`;
-      const ctaText = vendido ? 'Consultar por tu futuro lote' : 'Consultar por WhatsApp';
+      const ctaText = vendido ? 'Consultar por otros lotes' : 'Consultar por WhatsApp';
       const waMsg = vendido
         ? `Hola! Vi que el ${l.titulo} ya está vendido. ¿Tienen algún lote similar disponible?`
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
@@ -1378,7 +1378,7 @@
         </div>
         <div class="lote-body">
           <div class="lote-precio">VENDIDO</div>
-          <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar por tu futuro lote</a>
+          <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar por otros lotes</a>
         </div>
       </div>`).join('');
     cont.dataset.rendered = "1";
@@ -1409,7 +1409,7 @@
         : `<div class="lote-precio-arrow" aria-label="Consultá el precio por WhatsApp" title="Consultá el precio por WhatsApp">
              <span>Precio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
            </div>`;
-      const ctaText = vendido ? 'Consultar por tu futuro lote' : 'Consultar por WhatsApp';
+      const ctaText = vendido ? 'Consultar por otros lotes' : 'Consultar por WhatsApp';
       const waMsg = vendido
         ? `Hola! Vi que el ${l.titulo} ya está vendido. ¿Tienen algún lote similar disponible?`
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
@@ -1457,7 +1457,7 @@
         </div>
         <div class="lote-body">
           <div class="lote-precio">VENDIDO</div>
-          <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar por tu futuro lote</a>
+          <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar por otros lotes</a>
         </div>
       </div>`).join('');
     cont.dataset.rendered = "1";
@@ -1489,7 +1489,7 @@
         : `<div class="lote-precio-arrow" aria-label="Consultá el precio por WhatsApp" title="Consultá el precio por WhatsApp">
              <span>Precio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
            </div>`;
-      const ctaText = vendido ? 'Consultar por tu futuro lote' : 'Consultar por WhatsApp';
+      const ctaText = vendido ? 'Consultar por otros lotes' : 'Consultar por WhatsApp';
       const waMsg = vendido
         ? `Hola! Vi que el ${l.titulo} ya está vendido. ¿Tienen algún lote similar disponible?`
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
@@ -1529,7 +1529,7 @@
         : `<div class="lote-precio-arrow" aria-label="Consultá el precio por WhatsApp" title="Consultá el precio por WhatsApp">
              <span>Precio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
            </div>`;
-      const ctaText = vendido ? 'Consultar por tu futuro lote' : 'Consultar por WhatsApp';
+      const ctaText = vendido ? 'Consultar por otros lotes' : 'Consultar por WhatsApp';
       const waMsg = vendido
         ? `Hola! Vi que el ${l.titulo} ya está vendido. ¿Tienen algún lote similar disponible?`
         : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
@@ -1600,7 +1600,7 @@
         </div>
         <div class="lote-body">
           <div class="lote-precio">VENDIDO</div>
-          <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar por tu futuro lote</a>
+          <a class="whatsapp-btn" href="${waLinkHistorial(l)}" target="_blank" rel="noopener">${waIconSVG}Consultar por otros lotes</a>
         </div>
       </div>
     `).join('');
