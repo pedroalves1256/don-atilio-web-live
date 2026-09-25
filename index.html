@@ -1543,7 +1543,7 @@
   function renderLoteo5y490() {
     const cont = document.getElementById('l5490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L5490_PHOTO, "Plano del Loteo 5 y 490", "Loteo 5 y 490", "Calle 10 y Calle 9, entre 489 y 490, Gonnet") + l5490Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L5490_PHOTO, "Plano del Loteo 5 y 490", "Loteo 5 y 490", "Calle 5 4490, Gonnet") + l5490Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
