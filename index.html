@@ -1497,13 +1497,13 @@
   ].map(l => ({
     id: `LOTE ${l.num}`,
     titulo: `Lote ${l.num}, Barrio Don Atilio 3`,
-    direccion: "Calle 495, Gonnet",
+    direccion: "Calle 8 4050, Gonnet",
     estado: l.estado
   }));
   function renderDA3() {
     const cont = document.getElementById('da3-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3", "Calle 495, Gonnet") + da3Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3", "Calle 8 4050, Gonnet") + da3Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
