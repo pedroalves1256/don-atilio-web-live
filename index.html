@@ -511,6 +511,20 @@
   .plano-dot.reservado{ background: var(--soil); }
   .plano-dot.vendido{ background: var(--ink-soft); }
 
+  .plano-hero-map-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    align-self:flex-start;
+    font-size: 13px;
+    font-weight:600;
+    color: var(--soil);
+    text-decoration:none;
+    margin-top:-4px;
+  }
+  .plano-hero-map-link svg{ width:14px; height:14px; flex-shrink:0; }
+  .plano-hero-map-link:hover{ text-decoration:underline; }
+
   .plano-hero-img-btn{
     position:relative;
     display:block;
@@ -1142,7 +1156,8 @@
   const zoomIconSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>`;
 
   // --- Plano visual de cada loteo: se muestra una vez, grande y ampliable, arriba de las tarjetas ---
-  function planoHeroHTML(imgSrc, alt, label) {
+  function planoHeroHTML(imgSrc, alt, label, direccion) {
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${direccion}, La Plata, Buenos Aires, Argentina`)}`;
     return `
     <div class="plano-hero">
       <div class="plano-hero-head">
@@ -1153,6 +1168,7 @@
           <span><i class="plano-dot vendido"></i>Vendido</span>
         </div>
       </div>
+      <a class="plano-hero-map-link" href="${mapsUrl}" target="_blank" rel="noopener">${pinIconSVG}Ver ubicación en Google Maps</a>
       <button type="button" class="plano-hero-img-btn" data-plano-src="${imgSrc}" data-plano-alt="${alt}" aria-label="Ver plano de ${label} en tamaño grande">
         <img src="${imgSrc}" alt="${alt}" loading="lazy">
         <span class="plano-hero-zoom">${zoomIconSVG}Ver plano completo</span>
@@ -1277,7 +1293,7 @@
   function renderDA2Historial() {
     const cont = document.getElementById('da2-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(DA2_PHOTO, "Plano de Barrio Don Atilio 2", "Barrio Don Atilio 2") + lotes.map((l, index) => {
+    cont.innerHTML = planoHeroHTML(DA2_PHOTO, "Plano de Barrio Don Atilio 2", "Barrio Don Atilio 2", "Barrio Don Atilio 2, Manuel B. Gonnet") + lotes.map((l, index) => {
       return `
       <div class="lote-card vendido">
         <div class="lote-head">
@@ -1324,7 +1340,7 @@
   function renderL9489() {
     const cont = document.getElementById('l9489-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L9489_PHOTO, "Plano del Loteo 9 y 489", "Loteo 9 y 489") + l9489Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L9489_PHOTO, "Plano del Loteo 9 y 489", "Loteo 9 y 489", "Calle 9 y Calle 489, Gonnet") + l9489Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
@@ -1367,7 +1383,7 @@
   function renderL10489() {
     const cont = document.getElementById('l10489-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L10489_PHOTO, "Plano del Loteo 10 y 489", "Loteo 10 y 489") + l10489Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L10489_PHOTO, "Plano del Loteo 10 y 489", "Loteo 10 y 489", "Calle 10 y Calle 489, Gonnet") + l10489Lotes.map(l => `
       <div class="lote-card vendido">
         <div class="lote-head">
           <div class="lote-top">
@@ -1403,7 +1419,7 @@
   function renderL4490() {
     const cont = document.getElementById('l4490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L4490_PHOTO, "Plano del Loteo 4 y 490", "Loteo 4 y 490") + l4490Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L4490_PHOTO, "Plano del Loteo 4 y 490", "Loteo 4 y 490", "Calle 4 y Calle 490, Gonnet") + l4490Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
@@ -1446,7 +1462,7 @@
   function renderL4502b() {
     const cont = document.getElementById('l4502b-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B") + l4502bLotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B", "Calle 4 y 502B, Gonnet") + l4502bLotes.map(l => `
       <div class="lote-card vendido">
         <div class="lote-head">
           <div class="lote-top">
@@ -1483,7 +1499,7 @@
   function renderDA3() {
     const cont = document.getElementById('da3-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3") + da3Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3", "Calle 495, Gonnet") + da3Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
@@ -1523,7 +1539,7 @@
   function renderLoteo5y490() {
     const cont = document.getElementById('l5490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L5490_PHOTO, "Plano del Loteo 5 y 490", "Loteo 5 y 490") + l5490Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L5490_PHOTO, "Plano del Loteo 5 y 490", "Loteo 5 y 490", "Calle 10 y Calle 9, entre 489 y 490, Gonnet") + l5490Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
@@ -1589,7 +1605,7 @@
   function renderHistorialDA1() {
     const cont = document.getElementById('da1-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(CROQUIS_DA1, "Croquis del Barrio Don Atilio 1", "Barrio Don Atilio 1") + da1Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(CROQUIS_DA1, "Croquis del Barrio Don Atilio 1", "Barrio Don Atilio 1", "Calle 5, entre 489 y 490, Gonnet") + da1Lotes.map(l => `
       <div class="lote-card vendido">
         <div class="lote-head">
           <div class="lote-top">
