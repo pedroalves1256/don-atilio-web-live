@@ -886,7 +886,7 @@
     Tu navegador no soporta la reproducción de video. <a href="lote-video.mp4">Descargar el video</a>.
   </video>
   <div style="text-align:center; margin-top:14px;">
-    <a class="plano-hero-map-link" style="display:inline-flex;" href="https://www.google.com/maps/search/?api=1&query=Calle+8+4050,+Gonnet,+La+Plata,+Buenos+Aires,+Argentina" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Ver ubicación en Google Maps</a>
+    <a class="plano-hero-map-link" style="display:inline-flex;" href="https://www.google.com/maps/search/?api=1&query=-34.872431,-58.013560" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Ver ubicación en Google Maps</a>
   </div>
 </div>
 
@@ -1161,7 +1161,9 @@
 
   // --- Plano visual de cada loteo: se muestra una vez, grande y ampliable, arriba de las tarjetas ---
   function planoHeroHTML(imgSrc, alt, label, direccion) {
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${direccion}, Argentina`)}`;
+    const esCoordenadas = /^-?\d+(\.\d+)?,\s*-?\d+(\.\d+)?$/.test(direccion.trim());
+    const mapsQuery = esCoordenadas ? direccion.trim() : `${direccion}, Argentina`;
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
     return `
     <div class="plano-hero">
       <div class="plano-hero-head">
@@ -1503,7 +1505,7 @@
   function renderDA3() {
     const cont = document.getElementById('da3-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3", "Calle 8 4050, Gonnet, La Plata, Provincia de Buenos Aires") + da3Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(DA3_PHOTO, "Plano de Barrio Don Atilio 3", "Barrio Don Atilio 3", "-34.872431,-58.013560") + da3Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
