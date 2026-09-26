@@ -1611,7 +1611,7 @@
   function renderHistorialDA1() {
     const cont = document.getElementById('da1-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(CROQUIS_DA1, "Croquis del Barrio Don Atilio 1", "Barrio Don Atilio 1", "Calle 5, entre 489 y 490, Gonnet, La Plata, Provincia de Buenos Aires") + da1Lotes.map(l => `
+    cont.innerHTML = planoHeroHTML(CROQUIS_DA1, "Croquis del Barrio Don Atilio 1", "Barrio Don Atilio 1", "-34.867451,-58.017134") + da1Lotes.map(l => `
       <div class="lote-card vendido">
         <div class="lote-head">
           <div class="lote-top">
