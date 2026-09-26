@@ -1468,7 +1468,7 @@
   function renderL4502b() {
     const cont = document.getElementById('l4502b-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B", "Calle 4 y 502B, Gonnet, La Plata, Provincia de Buenos Aires") + l4502bLotes.map(l => `
+    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B", "-34.872890,-58.002188") + l4502bLotes.map(l => `
       <div class="lote-card vendido">
         <div class="lote-head">
           <div class="lote-top">
