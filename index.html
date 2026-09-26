@@ -1486,16 +1486,24 @@
     cont.dataset.rendered = "1";
   }
 
-  // --- Barrio Don Atilio 3 (mixto: 4 disponibles + 4 vendidos) ---
+  // --- Barrio Don Atilio 3 (mixto: 12 disponibles + 4 vendidos) ---
   const da3Lotes = [
     {num:'13A', estado:'disponible'},
     {num:'14A', estado:'disponible'},
     {num:'15A', estado:'disponible'},
     {num:'16A', estado:'disponible'},
+    {num:'12C', estado:'disponible'},
+    {num:'11C', estado:'disponible'},
+    {num:'10C', estado:'vendido'},
+    {num:'9C', estado:'disponible'},
     {num:'5C', estado:'vendido'},
     {num:'6C', estado:'vendido'},
     {num:'7C', estado:'vendido'},
-    {num:'10C', estado:'vendido'}
+    {num:'8C', estado:'disponible'},
+    {num:'4A', estado:'disponible'},
+    {num:'3A', estado:'disponible'},
+    {num:'2A', estado:'disponible'},
+    {num:'1A', estado:'disponible'}
   ].map(l => ({
     id: `LOTE ${l.num}`,
     titulo: `Lote ${l.num}, Barrio Don Atilio 3`,
