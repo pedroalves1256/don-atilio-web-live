@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stellular-bubblegum-f20c48.netlify.app/sitemap.xml
