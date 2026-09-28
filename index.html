@@ -1347,7 +1347,7 @@
   function renderL9489() {
     const cont = document.getElementById('l9489-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L9489_PHOTO, "Plano del Loteo 9 y 489", "Loteo 9 y 489", "Calle 9 4585, Gonnet, La Plata, Provincia de Buenos Aires") + l9489Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L9489_PHOTO, "Plano del Loteo 9 y 489", "Loteo 9 y 489", "-34.870855,-58.019730") + l9489Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
@@ -1426,7 +1426,7 @@
   function renderL4490() {
     const cont = document.getElementById('l4490-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L4490_PHOTO, "Plano del Loteo 4 y 490", "Loteo 4 y 490", "Calle 4 y Calle 490, Gonnet, La Plata, Provincia de Buenos Aires") + l4490Lotes.map(l => {
+    cont.innerHTML = planoHeroHTML(L4490_PHOTO, "Plano del Loteo 4 y 490", "Loteo 4 y 490", "-34.866841,-58.016146") + l4490Lotes.map(l => {
       const vendido = l.estado === 'vendido';
       const estadoHTML = vendido
         ? `<div class="lote-precio">VENDIDO</div>`
