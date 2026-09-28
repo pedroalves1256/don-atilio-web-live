@@ -738,15 +738,21 @@
   .faq-item.open .faq-a{ max-height:220px; padding-bottom: 20px; }
 
   /* ---------- MAPA ---------- */
-  .map-embed{
-    width:100%;
-    height: 380px;
-    border:0;
-    display:block;
-  }
   .map-wrap{
     border-top: 1px solid var(--paper-line);
     border-bottom: 1px solid var(--paper-line);
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+  }
+  .map-embed{
+    width:100%;
+    height: calc(100% + 37px);
+    border:0;
+    display:block;
+    position: absolute;
+    top: -37px;
+    left: 0;
   }
 
   /* ---------- WHATSAPP FLOTANTE ---------- */
