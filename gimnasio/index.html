@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Forja Gym — Entrenamiento funcional, musculación y clases en La Plata</title>
+<meta name="description" content="Forja Gym: musculación, funcional, cross training, boxeo y yoga en La Plata. Coaches certificados, horarios de 6 a 23 h y primera clase gratis. Consultá por WhatsApp.">
+<meta property="og:title" content="Forja Gym — Entrená en serio">
+<meta property="og:description" content="Musculación, funcional, cross, boxeo y yoga. Primera clase gratis.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0c;
+  --bg-2: #141416;
+  --bg-3: #1c1c1f;
+  --line: #2a2a2e;
+  --text: #f4f4f2;
+  --muted: #9a9a9f;
+  --accent: #d4ff3a;
+  --accent-ink: #0b0b0c;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1180px;
+  --radius: 14px;
+  --display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+
+button, a, [role="button"], summary {
+  touch-action: manipulation;
+}
+button, .btn, .seg button, .tabs button, summary {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+input, textarea, select { font-size: 16px; font-family: inherit; }
+
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow::before { content: ""; width: 18px; height: 2px; background: currentColor; }
+
+h1, h2, h3 { margin: 0; font-weight: 400; }
+.display {
+  font-family: var(--display);
+  text-transform: uppercase;
+  line-height: .95;
+  letter-spacing: .005em;
+}
+h2.display { font-size: clamp(40px, 7vw, 76px); margin-top: 14px; }
+.lead { color: var(--muted); font-size: clamp(16px, 1.6vw, 18px); max-width: 56ch; }
+
+section { padding: clamp(72px, 11vw, 128px) 0; }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 40px; margin-bottom: clamp(36px, 5vw, 56px); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px;
+  border: 0; border-radius: 999px;
+  font: 600 16px/1 var(--sans);
+  text-decoration: none; cursor: pointer;
+  transition: transform 140ms var(--ease-out), background-color 200ms ease, color 200ms ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn svg { width: 18px; height: 18px; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { background: #e2ff7a; }
+  .btn-ghost:hover { background: var(--bg-3); }
+  .btn:hover svg { transform: translateX(3px); }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  transition: background-color 250ms ease, box-shadow 250ms ease;
+}
+.site-header.scrolled {
+  background: rgba(11, 11, 12, .82);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 9px; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font-family: var(--display); font-size: 20px;
+}
+.logo-text { font-family: var(--display); font-size: 24px; letter-spacing: .04em; text-transform: uppercase; }
+.nav-links { display: none; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--muted); transition: color 160ms ease; }
+@media (hover: hover) and (pointer: fine) { .nav-links a:hover { color: var(--text); } }
+.nav-cta { display: none; min-height: 42px; padding: 0 20px; font-size: 15px; }
+
+.menu-btn {
+  width: 44px; height: 44px; border: 0; border-radius: 12px; background: var(--bg-3); color: var(--text);
+  display: grid; place-items: center; cursor: pointer;
+  transition: transform 140ms var(--ease-out);
+}
+.menu-btn:active { transform: scale(0.94); }
+.menu-btn svg { width: 22px; height: 22px; }
+
+@media (min-width: 900px) {
+  .nav-links, .nav-cta { display: flex; }
+  .menu-btn { display: none; }
+}
+
+/* ---------- Mobile sheet ---------- */
+.sheet-backdrop {
+  position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity 300ms ease;
+}
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 61;
+  background: var(--bg-2); border-radius: 22px 22px 0 0;
+  padding: 10px var(--gutter) calc(24px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(100%);
+  transition: transform 420ms var(--ease-drawer);
+  overscroll-behavior: contain;
+  max-height: 88dvh; overflow-y: auto;
+}
+.sheet-handle { width: 40px; height: 5px; border-radius: 99px; background: var(--line); margin: 6px auto 18px; }
+.sheet ul { list-style: none; margin: 0 0 20px; padding: 0; }
+.sheet li a {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 4px; border-bottom: 1px solid var(--line);
+  font-family: var(--display); font-size: 30px; text-transform: uppercase; text-decoration: none;
+  transition: color 120ms ease;
+}
+.sheet li a:active { color: var(--accent); }
+.sheet .btn { width: 100%; }
+body.menu-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
+body.menu-open .sheet { transform: translateY(0); }
+body.menu-open { overflow: hidden; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; align-items: flex-end;
+  padding: calc(120px + env(safe-area-inset-top, 0px)) 0 clamp(48px, 8vw, 88px);
+  overflow: hidden; isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(212,255,58,.16), transparent 70%),
+    radial-gradient(50% 60% at 10% 90%, rgba(212,255,58,.07), transparent 70%),
+    var(--bg);
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: .35;
+  -webkit-mask-image: radial-gradient(80% 70% at 70% 30%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(80% 70% at 70% 30%, #000 20%, transparent 75%);
+}
+.hero-word {
+  position: absolute; right: -2vw; top: 50%; transform: translateY(-58%);
+  font-family: var(--display); font-size: clamp(180px, 34vw, 520px); line-height: .8;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(244,244,242,.07);
+  pointer-events: none; user-select: none; z-index: -1;
+}
+.hero h1 { font-size: clamp(58px, 12.5vw, 168px); margin: 18px 0 22px; }
+.hero h1 .hl { color: var(--accent); }
+.hero .lead { font-size: clamp(17px, 1.8vw, 20px); margin: 0 0 32px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 36px;
+  font-size: 14px; color: var(--muted);
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(212,255,58,.18); }
+
+/* Hero entrance: first-time view, so a short stagger is earned */
+.hero-in { opacity: 0; transform: translateY(16px); animation: rise 700ms var(--ease-out) forwards; }
+.hero-in:nth-child(1) { animation-delay: 60ms; }
+.hero-in:nth-child(2) { animation-delay: 120ms; }
+.hero-in:nth-child(3) { animation-delay: 180ms; }
+.hero-in:nth-child(4) { animation-delay: 240ms; }
+.hero-in:nth-child(5) { animation-delay: 300ms; }
+@keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+/* ---------- Marquee ---------- */
+.marquee {
+  border-block: 1px solid var(--line); background: var(--accent); color: var(--accent-ink);
+  overflow: hidden; padding: 14px 0;
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.marquee span {
+  font-family: var(--display); font-size: 26px; text-transform: uppercase; letter-spacing: .02em;
+  padding: 0 22px; white-space: nowrap; display: inline-flex; align-items: center; gap: 44px;
+}
+.marquee span::after { content: "✦"; font-size: 18px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Stats ---------- */
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.stat { background: var(--bg); padding: clamp(22px, 3.5vw, 36px); }
+.stat strong { display: block; font-family: var(--display); font-size: clamp(44px, 6vw, 72px); line-height: 1; font-weight: 400; }
+.stat strong em { font-style: normal; color: var(--accent); }
+.stat span { color: var(--muted); font-size: 14px; }
+@media (min-width: 760px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---------- Disciplinas ---------- */
+.grid-cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .grid-cards { grid-template-columns: repeat(3, 1fr); } }
+.card {
+  position: relative; overflow: hidden;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px; min-height: 250px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+  transition: border-color 200ms ease, transform 250ms var(--ease-out);
+}
+.card-icon {
+  width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--bg-3); color: var(--accent);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.card-icon svg { width: 26px; height: 26px; }
+.card h3 { font-family: var(--display); font-size: 34px; text-transform: uppercase; line-height: 1; }
+.card p { color: var(--muted); margin: 10px 0 0; font-size: 15px; }
+.card .tag { position: absolute; top: 22px; right: 22px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { border-color: #3d3d42; transform: translateY(-3px); }
+  .card:hover .card-icon { background: var(--accent); color: var(--accent-ink); }
+}
+.card.featured { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.card.featured p, .card.featured .tag { color: rgba(11,11,12,.7); }
+.card.featured .card-icon { background: var(--accent-ink); color: var(--accent); }
+
+/* ---------- Planes ---------- */
+.seg {
+  position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px;
+}
+.seg-indicator {
+  position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  background: var(--text); border-radius: 999px;
+  transition: transform 260ms var(--ease-in-out);
+}
+.seg[data-value="anual"] .seg-indicator { transform: translateX(100%); }
+.seg button {
+  position: relative; z-index: 1; border: 0; background: none; cursor: pointer;
+  min-height: 42px; padding: 0 22px; border-radius: 999px;
+  font: 600 15px/1 var(--sans); color: var(--muted);
+  transition: color 200ms ease;
+}
+.seg button[aria-pressed="true"] { color: var(--bg); }
+.seg small { font-size: 11px; color: inherit; opacity: .8; margin-left: 6px; }
+
+.plans { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .plans { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+.plan {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px 26px; display: flex; flex-direction: column;
+}
+.plan.pop { background: var(--bg-3); border-color: var(--accent); position: relative; }
+.plan.pop::before {
+  content: "Más elegido"; position: absolute; top: -12px; left: 26px;
+  background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700;
+  padding: 5px 12px; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase;
+}
+.plan h3 { font-family: var(--display); font-size: 30px; text-transform: uppercase; }
+.plan .desc { color: var(--muted); font-size: 15px; margin: 6px 0 22px; }
+.price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.price .amount {
+  font-family: var(--display); font-size: 58px; line-height: 1;
+  display: inline-block; transition: opacity 180ms ease, filter 180ms ease;
+}
+.price .amount.swap { opacity: 0; filter: blur(4px); }
+.price .per { color: var(--muted); font-size: 15px; }
+.price-note { color: var(--muted); font-size: 13px; min-height: 20px; margin-bottom: 22px; }
+.plan ul { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; flex: 1; }
+.plan li { display: flex; gap: 10px; font-size: 15px; }
+.plan li svg { flex: none; width: 20px; height: 20px; color: var(--accent); margin-top: 2px; }
+.plan .btn { width: 100%; }
+
+/* ---------- Horarios ---------- */
+.tabs {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  scroll-snap-type: x mandatory; margin-bottom: 18px; padding-bottom: 2px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button {
+  scroll-snap-align: start; flex: none;
+  min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line);
+  background: transparent; color: var(--muted); font: 600 15px/1 var(--sans); cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
+}
+.tabs button:active { transform: scale(0.96); }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .tabs button:not([aria-selected="true"]):hover { color: var(--text); border-color: #3d3d42; }
+}
+.schedule { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: opacity 150ms ease; }
+.schedule.swap { opacity: 0; }
+.slot {
+  display: grid; grid-template-columns: 92px 1fr auto; align-items: center; gap: 14px;
+  padding: 16px 20px; border-bottom: 1px solid var(--line); background: var(--bg-2);
+}
+.slot:last-child { border-bottom: 0; }
+.slot time { font-family: var(--display); font-size: 24px; }
+.slot b { display: block; font-weight: 600; }
+.slot small { color: var(--muted); font-size: 14px; }
+.lvl { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--bg-3); color: var(--muted); white-space: nowrap; }
+.lvl.all { color: var(--accent); }
+.schedule-foot { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+/* ---------- Coaches ---------- */
+.coaches {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 78%);
+  gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 8px; scrollbar-width: none;
+  margin: 0 calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+}
+.coaches::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) {
+  .coaches { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); overflow: visible; margin: 0; padding-inline: 0; }
+}
+.coach { scroll-snap-align: start; }
+.coach-photo {
+  aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; position: relative;
+  background: var(--bg-3); border: 1px solid var(--line);
+  display: grid; place-items: center;
+}
+.coach-photo span {
+  font-family: var(--display); font-size: 110px; color: transparent; -webkit-text-stroke: 1.5px #3a3a40;
+}
+.coach-photo::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 45%;
+  background: linear-gradient(transparent, rgba(212,255,58,.12));
+}
+.coach h3 { font-family: var(--display); font-size: 26px; text-transform: uppercase; margin-top: 14px; }
+.coach p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+/* ---------- Testimonios ---------- */
+.quotes { display: grid; gap: 14px; }
+@media (min-width: 900px) { .quotes { grid-template-columns: repeat(3, 1fr); } }
+.quote { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; margin: 0; }
+.quote blockquote { margin: 0 0 22px; font-size: 17px; line-height: 1.55; }
+.quote blockquote::before { content: "“"; display: block; font-family: var(--display); font-size: 56px; line-height: .6; color: var(--accent); margin-bottom: 8px; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+.quote figcaption b { color: var(--text); display: block; font-weight: 600; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-3); display: grid; place-items: center; font-weight: 700; color: var(--accent); }
+
+/* ---------- FAQ ---------- */
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.faq summary {
+  list-style: none; cursor: pointer; padding: 20px 22px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-weight: 600; font-size: 17px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary .plus { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--bg-3); display: grid; place-items: center; transition: transform 220ms var(--ease-out), background-color 200ms ease; }
+.faq summary .plus svg { width: 14px; height: 14px; }
+.faq details[open] summary .plus { transform: rotate(45deg); background: var(--accent); color: var(--accent-ink); }
+.faq details p { margin: 0; padding: 0 22px 22px; color: var(--muted); }
+
+/* ---------- Contacto ---------- */
+.cta-box {
+  background: var(--accent); color: var(--accent-ink); border-radius: 24px;
+  padding: clamp(32px, 6vw, 64px); display: grid; gap: 36px;
+}
+@media (min-width: 900px) { .cta-box { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+.cta-box h2 { font-size: clamp(44px, 7vw, 84px); }
+.cta-box .lead { color: rgba(11,11,12,.72); margin-top: 16px; }
+.contact-list { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; font-weight: 500; }
+.contact-list li { display: flex; gap: 10px; align-items: center; }
+.contact-list svg { width: 18px; height: 18px; flex: none; }
+.form { background: var(--bg); color: var(--text); border-radius: 18px; padding: clamp(22px, 3.5vw, 32px); display: grid; gap: 14px; }
+.form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.form input, .form select {
+  width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px;
+  background: var(--bg-2); color: var(--text); border: 1px solid var(--line);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  -webkit-appearance: none; appearance: none;
+}
+.form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%239a9a9f' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px;
+}
+.form input:focus, .form select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(212,255,58,.2); }
+.form .btn { margin-top: 6px; }
+.form-note { font-size: 13px; color: var(--muted); text-align: center; margin: 0; }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid var(--line); padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 14px; }
+.foot { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; }
+.foot nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot a { text-decoration: none; transition: color 160ms ease; }
+@media (hover: hover) and (pointer: fine) { .foot a:hover { color: var(--text); } }
+
+/* ---------- Floating WhatsApp ---------- */
+.wa-float {
+  position: fixed; z-index: 40;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; color: #fff; display: grid; place-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  transition: transform 140ms var(--ease-out), opacity 250ms ease;
+}
+.wa-float:active { transform: scale(0.94); }
+.wa-float svg { width: 30px; height: 30px; }
+
+/* ---------- Scroll reveal (marketing page, fires once) ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+.js .reveal.visible { opacity: 1; transform: none; }
+.js .reveal-group > * { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+.js .reveal-group.visible > * { opacity: 1; transform: none; }
+.js .reveal-group.visible > *:nth-child(2) { transition-delay: 60ms; }
+.js .reveal-group.visible > *:nth-child(3) { transition-delay: 120ms; }
+.js .reveal-group.visible > *:nth-child(4) { transition-delay: 180ms; }
+.js .reveal-group.visible > *:nth-child(5) { transition-delay: 240ms; }
+.js .reveal-group.visible > *:nth-child(6) { transition-delay: 300ms; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Reduced motion: keep fades that aid comprehension, drop movement */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-in { transform: none; animation: fade 300ms ease forwards; }
+  @keyframes fade { to { opacity: 1; } }
+  .marquee-track { animation: none; }
+  .js .reveal, .js .reveal-group > * { transform: none; transition: opacity 300ms ease; }
+  .sheet { transition: none; }
+  .seg-indicator { transition: none; }
+  .card, .btn, .btn svg { transition-property: background-color, color, border-color; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');document.body.classList.add('js');</script>
+
+<header class="site-header" id="header">
+  <div class="wrap nav">
+    <a href="#inicio" class="logo" aria-label="Forja Gym, inicio">
+      <span class="logo-mark" aria-hidden="true">F</span>
+      <span class="logo-text">Forja</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#disciplinas">Disciplinas</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#coaches">Coaches</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-primary nav-cta">Clase gratis</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="sheet-backdrop" id="backdrop"></div>
+<nav class="sheet" id="sheet" aria-label="Menú" aria-hidden="true" inert>
+  <div class="sheet-handle"></div>
+  <ul>
+    <li><a href="#disciplinas">Disciplinas <span aria-hidden="true">→</span></a></li>
+    <li><a href="#planes">Planes <span aria-hidden="true">→</span></a></li>
+    <li><a href="#horarios">Horarios <span aria-hidden="true">→</span></a></li>
+    <li><a href="#coaches">Coaches <span aria-hidden="true">→</span></a></li>
+    <li><a href="#faq">Preguntas <span aria-hidden="true">→</span></a></li>
+  </ul>
+  <a href="#contacto" class="btn btn-primary">Reservá tu clase gratis</a>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-word" aria-hidden="true">FORJA</div>
+    <div class="wrap">
+      <span class="eyebrow hero-in">Gimnasio · La Plata</span>
+      <h1 class="display hero-in">Entrená<br>en <span class="hl">serio.</span></h1>
+      <p class="lead hero-in">Musculación, funcional, cross training, boxeo y yoga en un mismo lugar. Coaches que te siguen de cerca y un plan pensado para vos, no para el promedio.</p>
+      <div class="hero-actions hero-in">
+        <a href="#contacto" class="btn btn-primary">Reservá tu clase gratis
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#planes" class="btn btn-ghost">Ver planes</a>
+      </div>
+      <div class="hero-badge hero-in"><span class="dot"></span> <span id="hoursToday">Abierto hoy de 6:00 a 23:00 h</span></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Musculación</span><span>Funcional</span><span>Cross Training</span><span>Boxeo</span><span>Yoga</span><span>Spinning</span>
+      <span>Musculación</span><span>Funcional</span><span>Cross Training</span><span>Boxeo</span><span>Yoga</span><span>Spinning</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section style="padding-bottom:0">
+    <div class="wrap">
+      <div class="stats reveal-group">
+        <div class="stat"><strong data-count="1200">0<em>+</em></strong><span>socios activos</span></div>
+        <div class="stat"><strong data-count="45">0<em>+</em></strong><span>clases por semana</span></div>
+        <div class="stat"><strong data-count="12">0</strong><span>coaches certificados</span></div>
+        <div class="stat"><strong data-count="900">0<em>m²</em></strong><span>de salón equipado</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINAS -->
+  <section id="disciplinas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Disciplinas</span>
+          <h2 class="display">Elegí cómo<br>querés entrenar</h2>
+        </div>
+        <p class="lead">Seis formas de moverte, todas incluidas en el plan Full. Combinalas como quieras durante la semana.</p>
+      </div>
+      <div class="grid-cards reveal-group">
+        <article class="card featured">
+          <span class="tag">Libre</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg></div>
+          <div><h3>Musculación</h3><p>Sala con máquinas, peso libre y racks. Rutina personalizada que se actualiza cada 4 semanas.</p></div>
+        </article>
+        <article class="card">
+          <span class="tag">Grupal</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <div><h3>Funcional</h3><p>Fuerza, movilidad y resistencia en circuitos de 50 minutos. Para todos los niveles.</p></div>
+        </article>
+        <article class="card">
+          <span class="tag">Grupal</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M9 6V3h6v3"/></svg></div>
+          <div><h3>Cross Training</h3><p>WODs de alta intensidad con barras, kettlebells y gimnásticos. Técnica primero.</p></div>
+        </article>
+        <article class="card">
+          <span class="tag">Grupal</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h7a4 4 0 014 4v5a3 3 0 01-3 3H8a3 3 0 01-3-3V6a2 2 0 012-2z"/><path d="M7 16v4h9v-4M5 9h6"/></svg></div>
+          <div><h3>Boxeo</h3><p>Técnica, bolsa y guantes. Quemás calorías y sacás la cabeza del día.</p></div>
+        </article>
+        <article class="card">
+          <span class="tag">Grupal</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M4 21l4-7 4 2 4-2 4 7M12 9v7"/></svg></div>
+          <div><h3>Yoga</h3><p>Flexibilidad, respiración y fuerza de core. El complemento ideal para la sala.</p></div>
+        </article>
+        <article class="card">
+          <span class="tag">Grupal</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.5"/><circle cx="18" cy="17" r="3.5"/><path d="M6 17l4-8h5l3 8M9 5h3"/></svg></div>
+          <div><h3>Spinning</h3><p>45 minutos de cardio con música y luces. La clase más pedida de la noche.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section id="planes" style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Planes</span>
+          <h2 class="display">Sin matrícula.<br>Sin letra chica.</h2>
+        </div>
+        <div class="seg" id="billing" data-value="mensual" role="group" aria-label="Período de pago">
+          <span class="seg-indicator" aria-hidden="true"></span>
+          <button type="button" data-value="mensual" aria-pressed="true">Mensual</button>
+          <button type="button" data-value="anual" aria-pressed="false">Anual <small>−20%</small></button>
+        </div>
+      </div>
+      <div class="plans reveal-group">
+        <article class="plan">
+          <h3>Base</h3>
+          <p class="desc">Para arrancar con la sala.</p>
+          <div class="price"><span class="amount" data-mensual="28.000" data-anual="22.400">$28.000</span><span class="per">/mes</span></div>
+          <p class="price-note" data-anual-note="Pagás $268.800 por año">&nbsp;</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Musculación libre todos los días</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Rutina inicial con coach</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Vestuarios y lockers</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost" data-plan="Base">Quiero este plan</a>
+        </article>
+        <article class="plan pop">
+          <h3>Full</h3>
+          <p class="desc">Sala + todas las clases grupales.</p>
+          <div class="price"><span class="amount" data-mensual="39.000" data-anual="31.200">$39.000</span><span class="per">/mes</span></div>
+          <p class="price-note" data-anual-note="Pagás $374.400 por año">&nbsp;</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Todo lo del plan Base</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Clases ilimitadas de las 6 disciplinas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Rutina actualizada cada 4 semanas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Reserva de clases por WhatsApp</li>
+          </ul>
+          <a href="#contacto" class="btn btn-primary" data-plan="Full">Quiero este plan</a>
+        </article>
+        <article class="plan">
+          <h3>Personal</h3>
+          <p class="desc">Entrenamiento 1 a 1 con objetivos.</p>
+          <div class="price"><span class="amount" data-mensual="72.000" data-anual="57.600">$72.000</span><span class="per">/mes</span></div>
+          <p class="price-note" data-anual-note="Pagás $691.200 por año">&nbsp;</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Todo lo del plan Full</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>8 sesiones personalizadas al mes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Evaluación corporal mensual</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Guía de alimentación</li>
+          </ul>
+          <a href="#contacto" class="btn btn-ghost" data-plan="Personal">Quiero este plan</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS -->
+  <section id="horarios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Horarios</span>
+          <h2 class="display">Clases de la<br>semana</h2>
+        </div>
+        <p class="lead">La sala está abierta de lunes a viernes de 6 a 23 h, sábados de 8 a 20 h y domingos de 9 a 13 h.</p>
+      </div>
+      <div class="reveal">
+        <div class="tabs" role="tablist" aria-label="Día de la semana" id="dayTabs"></div>
+        <div class="schedule" id="schedule" role="tabpanel"></div>
+        <p class="schedule-foot">Cupos limitados por clase. Reservá con hasta 24 h de anticipación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHES -->
+  <section id="coaches" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Equipo</span>
+          <h2 class="display">Tus coaches</h2>
+        </div>
+        <p class="lead">Profesores de educación física y entrenadores certificados, con años en el piso de la sala.</p>
+      </div>
+      <div class="coaches reveal-group">
+        <div class="coach"><div class="coach-photo"><span>MR</span></div><h3>Martina Ríos</h3><p>Funcional · Cross Training</p></div>
+        <div class="coach"><div class="coach-photo"><span>LP</span></div><h3>Lucas Pereyra</h3><p>Musculación · Personal</p></div>
+        <div class="coach"><div class="coach-photo"><span>SG</span></div><h3>Sofía Gómez</h3><p>Yoga · Movilidad</p></div>
+        <div class="coach"><div class="coach-photo"><span>DA</span></div><h3>Diego Acosta</h3><p>Boxeo · Spinning</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Socios</span>
+          <h2 class="display">Lo que dicen</h2>
+        </div>
+      </div>
+      <div class="quotes reveal-group">
+        <figure class="quote">
+          <blockquote>Probé varios gimnasios y en ninguno me sentí tan acompañada. Los coaches saben tu nombre y te corrigen la técnica.</blockquote>
+          <figcaption><span class="avatar">C</span><span><b>Camila</b>Socia hace 2 años</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Arranqué con el plan Base y a los dos meses me pasé al Full. Las clases de cross a las 19 h son lo mejor del día.</blockquote>
+          <figcaption><span class="avatar">J</span><span><b>Joaquín</b>Socio hace 8 meses</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Bajé 9 kilos con el plan Personal y, sobre todo, aprendí a entrenar sin lastimarme. Súper recomendable.</blockquote>
+          <figcaption><span class="avatar">R</span><span><b>Romina</b>Socia hace 1 año</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2 class="display">Antes de venir</h2>
+        </div>
+      </div>
+      <div class="faq reveal-group">
+        <details>
+          <summary>¿La primera clase es realmente gratis?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Sí. Reservás por WhatsApp, venís, probás la disciplina que quieras y recién después decidís. No pedimos tarjeta.</p>
+        </details>
+        <details>
+          <summary>Nunca entrené, ¿puedo arrancar igual?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Claro. Todas las clases tienen variantes por nivel y en la sala un coach te arma una rutina inicial según tu experiencia y objetivos.</p>
+        </details>
+        <details>
+          <summary>¿Necesito apto médico?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Sí, pedimos un apto físico vigente dentro de los primeros 30 días. Si no lo tenés, te pasamos centros cercanos donde hacerlo.</p>
+        </details>
+        <details>
+          <summary>¿Qué medios de pago aceptan?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Efectivo, transferencia, débito, crédito y Mercado Pago. El plan anual se puede pagar en cuotas.</p>
+        </details>
+        <details>
+          <summary>¿Puedo congelar la cuota si me voy de vacaciones?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Con el plan anual podés congelar hasta 30 días por año. En los mensuales simplemente no renovás ese mes.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div>
+          <h2 class="display">Tu primera<br>clase va por<br>nuestra cuenta</h2>
+          <p class="lead">Dejanos tus datos y te escribimos por WhatsApp para coordinar día y horario.</p>
+          <ul class="contact-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Calle 7 N° 1234, La Plata</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Lun a vie 6–23 h · Sáb 8–20 h · Dom 9–13 h</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>@forjagym</li>
+          </ul>
+        </div>
+        <form class="form" id="leadForm" novalidate>
+          <label>Nombre
+            <input name="nombre" type="text" autocomplete="given-name" enterkeyhint="next" required placeholder="¿Cómo te llamás?">
+          </label>
+          <label>Teléfono
+            <input name="tel" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="221 555 1234">
+          </label>
+          <label>¿Qué te interesa?
+            <select name="interes">
+              <option>Musculación</option>
+              <option>Funcional</option>
+              <option>Cross Training</option>
+              <option>Boxeo</option>
+              <option>Yoga</option>
+              <option>Spinning</option>
+              <option>Entrenamiento personal</option>
+            </select>
+          </label>
+          <label>Plan
+            <select name="plan" id="planSelect">
+              <option>Todavía no sé</option>
+              <option>Base</option>
+              <option>Full</option>
+              <option>Personal</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary">Reservar por WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-note">Te respondemos en menos de 1 hora en horario de atención.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#inicio" class="logo"><span class="logo-mark" aria-hidden="true">F</span><span class="logo-text" style="color:var(--text)">Forja</span></a>
+    <nav aria-label="Pie de página">
+      <a href="#disciplinas">Disciplinas</a>
+      <a href="#planes">Planes</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <span>© <span id="year"></span> Forja Gym · La Plata</span>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.8 11.9 11.9 0 004.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script>
+(function () {
+  // Número de WhatsApp del gimnasio (código de país + área, sin + ni espacios). Reemplazar por el real.
+  var WHATSAPP = '5492210000000';
+  var waBase = 'https://wa.me/' + WHATSAPP + '?text=';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('waFloat').href = waBase + encodeURIComponent('¡Hola Forja! Quiero info sobre los planes.');
+
+  var hoursByDay = ['9:00 a 13:00', '6:00 a 23:00', '6:00 a 23:00', '6:00 a 23:00', '6:00 a 23:00', '6:00 a 23:00', '8:00 a 20:00'];
+  document.getElementById('hoursToday').textContent = 'Abierto hoy de ' + hoursByDay[new Date().getDay()] + ' h';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Header background once the hero is scrolled */
+  var header = document.getElementById('header');
+  var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile menu sheet */
+  var menuBtn = document.getElementById('menuBtn');
+  var sheet = document.getElementById('sheet');
+  var backdrop = document.getElementById('backdrop');
+  function setMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    sheet.setAttribute('aria-hidden', String(!open));
+    sheet.inert = !open;
+    if (open) sheet.querySelector('a').focus({ preventScroll: true });
+  }
+  menuBtn.addEventListener('click', function () { setMenu(true); });
+  backdrop.addEventListener('click', function () { setMenu(false); });
+  sheet.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* Scroll reveal: once per element */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-group');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+        entry.target.querySelectorAll('[data-count]').forEach(countUp);
+      });
+    }, { rootMargin: '0px 0px -80px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+    document.querySelectorAll('[data-count]').forEach(countUp);
+  }
+
+  /* Stat counters */
+  function countUp(el) {
+    var target = +el.dataset.count;
+    var suffix = el.querySelector('em') ? el.querySelector('em').outerHTML : '';
+    var fmt = function (n) { return n.toLocaleString('es-AR'); };
+    if (reduceMotion) { el.innerHTML = fmt(target) + suffix; return; }
+    var start = performance.now(), dur = 1200;
+    (function tick(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 4);
+      el.innerHTML = fmt(Math.round(target * eased)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
+  }
+
+  /* Billing toggle */
+  var seg = document.getElementById('billing');
+  seg.querySelectorAll('button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var value = btn.dataset.value;
+      if (seg.dataset.value === value) return;
+      seg.dataset.value = value;
+      seg.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      document.querySelectorAll('.price .amount').forEach(function (amt) {
+        amt.classList.add('swap');
+        setTimeout(function () {
+          amt.textContent = '$' + amt.dataset[value];
+          amt.classList.remove('swap');
+        }, reduceMotion ? 0 : 180);
+      });
+      document.querySelectorAll('.price-note').forEach(function (note) {
+        note.innerHTML = value === 'anual' ? note.dataset.anualNote : '&nbsp;';
+      });
+    });
+  });
+
+  /* Plan buttons preselect the plan in the form */
+  var planSelect = document.getElementById('planSelect');
+  document.querySelectorAll('[data-plan]').forEach(function (a) {
+    a.addEventListener('click', function () { planSelect.value = a.dataset.plan; });
+  });
+
+  /* Schedule */
+  var days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  var A = { t: '07:00', c: 'Funcional', h: 'Martina R.', l: 'Todos los niveles' };
+  var schedule = {
+    Lunes:     [A, { t: '09:00', c: 'Yoga', h: 'Sofía G.', l: 'Todos los niveles' }, { t: '18:00', c: 'Cross Training', h: 'Martina R.', l: 'Intermedio' }, { t: '19:00', c: 'Boxeo', h: 'Diego A.', l: 'Todos los niveles' }, { t: '20:30', c: 'Spinning', h: 'Diego A.', l: 'Todos los niveles' }],
+    Martes:    [{ t: '07:00', c: 'Cross Training', h: 'Martina R.', l: 'Intermedio' }, { t: '10:00', c: 'Funcional', h: 'Lucas P.', l: 'Todos los niveles' }, { t: '18:30', c: 'Yoga', h: 'Sofía G.', l: 'Todos los niveles' }, { t: '19:30', c: 'Funcional', h: 'Martina R.', l: 'Todos los niveles' }],
+    Miércoles: [A, { t: '09:00', c: 'Yoga', h: 'Sofía G.', l: 'Todos los niveles' }, { t: '18:00', c: 'Cross Training', h: 'Martina R.', l: 'Avanzado' }, { t: '19:00', c: 'Boxeo', h: 'Diego A.', l: 'Todos los niveles' }, { t: '20:30', c: 'Spinning', h: 'Diego A.', l: 'Todos los niveles' }],
+    Jueves:    [{ t: '07:00', c: 'Cross Training', h: 'Martina R.', l: 'Intermedio' }, { t: '10:00', c: 'Funcional', h: 'Lucas P.', l: 'Todos los niveles' }, { t: '18:30', c: 'Yoga', h: 'Sofía G.', l: 'Todos los niveles' }, { t: '19:30', c: 'Boxeo', h: 'Diego A.', l: 'Intermedio' }],
+    Viernes:   [A, { t: '18:00', c: 'Cross Training', h: 'Martina R.', l: 'Todos los niveles' }, { t: '19:00', c: 'Spinning', h: 'Diego A.', l: 'Todos los niveles' }],
+    Sábado:    [{ t: '09:30', c: 'Funcional en equipo', h: 'Martina R.', l: 'Todos los niveles' }, { t: '11:00', c: 'Yoga', h: 'Sofía G.', l: 'Todos los niveles' }]
+  };
+  var tabsEl = document.getElementById('dayTabs');
+  var schedEl = document.getElementById('schedule');
+  var today = new Date().getDay(); // 0 = domingo
+  var current = days[today === 0 ? 0 : today - 1];
+
+  function renderDay(day) {
+    schedEl.innerHTML = schedule[day].map(function (s) {
+      return '<div class="slot"><time>' + s.t + '</time><div><b>' + s.c + '</b><small>con ' + s.h + '</small></div>' +
+        '<span class="lvl' + (s.l === 'Todos los niveles' ? ' all' : '') + '">' + s.l + '</span></div>';
+    }).join('');
+    schedEl.setAttribute('aria-label', 'Clases del ' + day.toLowerCase());
+  }
+  days.forEach(function (day) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.role = 'tab';
+    b.textContent = day;
+    b.setAttribute('aria-selected', String(day === current));
+    b.addEventListener('click', function () {
+      if (day === current) return;
+      current = day;
+      tabsEl.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+      if (reduceMotion) { renderDay(day); return; }
+      schedEl.classList.add('swap');
+      setTimeout(function () { renderDay(day); schedEl.classList.remove('swap'); }, 150);
+    });
+    tabsEl.appendChild(b);
+  });
+  renderDay(current);
+
+  /* Lead form → WhatsApp */
+  document.getElementById('leadForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var nombre = f.nombre.value.trim();
+    if (!nombre) { f.nombre.focus(); return; }
+    var msg = '¡Hola Forja! Soy ' + nombre + '. Quiero reservar mi clase gratis de ' + f.interes.value +
+      '. Plan: ' + f.plan.value + '.' + (f.tel.value.trim() ? ' Mi teléfono: ' + f.tel.value.trim() + '.' : '');
+    window.open(waBase + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
