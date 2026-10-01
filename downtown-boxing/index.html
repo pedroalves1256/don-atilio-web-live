@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Downtown Boxing Club — Boxing Gym in Panama City, FL</title>
-<meta name="description" content="Downtown Boxing Club in Panama City, Florida: boxing and fitness classes for every age and level, coached by a Hall of Fame boxer. 320 Luverne Ave. Call (850) 257-5783.">
+<meta name="description" content="Real boxing in downtown Panama City, FL. Adult classes, Young Boxer Program (ages 8–15), private lessons and open gym with a 20×20 pro ring. 320 Luverne Ave · (850) 257-5783.">
 <meta property="og:title" content="Downtown Boxing Club · Panama City, FL">
-<meta property="og:description" content="Boxing and fitness classes for every age and level. 320 Luverne Ave, Panama City.">
+<meta property="og:description" content="Adult classes, kids program, private lessons and a 20×20 pro ring. Coached by fighters who've been on ESPN.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta name="theme-color" content="#0a0a0a">
@@ -22,6 +22,9 @@
     if (alt) { img.removeAttribute('data-fallback'); img.src = alt; }
     else { img.remove(); }
   }
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"Downtown Boxing Club","telephone":"+1-850-257-5783","address":{"@type":"PostalAddress","streetAddress":"320 Luverne Ave","addressLocality":"Panama City","addressRegion":"FL","postalCode":"32401","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"12:00"}]}
 </script>
 <style>
 :root {
@@ -663,6 +666,48 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
 .step b { display: block; font-family: var(--display); font-weight: 800; font-size: 34px; text-transform: uppercase; line-height: 1; margin: 14px 0 8px; }
 .step p { color: var(--muted); margin: 0; font-size: 15px; }
 .step .n { font-family: var(--display); font-weight: 900; font-size: 64px; line-height: .8; }
+/* Downtown Boxing: schedule, pricing, coaches */
+.week { display: grid; gap: 10px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .week { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .week { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; } .week .day { padding: 12px; } .cls { flex-wrap: wrap; padding: 8px 9px; } .cls span { text-align: left; font-size: 13px; } }
+.week .day { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; transition: border-color 200ms ease; }
+.week .day.today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.week .dname { font-family: var(--display); font-weight: 900; font-size: 30px; text-transform: uppercase; line-height: 1; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.today-tag { display: none; font: 700 10px var(--sans); letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: #fff; padding: 3px 7px; border-radius: 4px; }
+.day.today .today-tag { display: inline-block; }
+.cls { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 11px; border-radius: 9px; background: var(--bg-3); font-size: 14px; }
+.cls b { font-family: var(--display); font-weight: 800; font-size: 20px; white-space: nowrap; }
+.cls b small { font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--muted); }
+.cls span { color: var(--muted); text-align: right; }
+.cls.closed { justify-content: center; }
+.cls.next { background: var(--accent); }
+.cls.next b, .cls.next span, .cls.next b small { color: #fff; }
+.sched-note { color: var(--muted); font-size: 14px; margin: 16px 0 0; }
+@media (min-width: 960px) { .plans.three { grid-template-columns: repeat(3, 1fr); } }
+.plan.pop::before { content: "Best value"; }
+.plan h3 { font-size: clamp(38px, 4vw, 54px) !important; }
+.price { display: flex; align-items: baseline; gap: 8px; margin: -6px 0 22px; flex-wrap: wrap; }
+.price .amt { font-family: var(--display); font-weight: 900; font-size: 64px; line-height: 1; }
+.price .per, .price .small { color: var(--muted); font-size: 15px; }
+.price .small { width: 100%; margin-bottom: -6px; }
+.price-list li { justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.price-list li em { font-style: normal; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-left: 6px; }
+.price-list li b { font-family: var(--display); font-size: 24px; }
+.coach-grid { display: grid; gap: 14px; }
+@media (min-width: 900px) { .coach-grid { grid-template-columns: 1fr 1fr; } }
+.coach-card { display: grid; grid-template-columns: 1fr; background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+@media (min-width: 560px) { .coach-card { grid-template-columns: 200px 1fr; } }
+.coach-card .ph { min-height: 260px; }
+.coach-body { padding: 26px; }
+.coach-body .role { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.coach-body h3 { font-family: var(--display); font-weight: 900; font-size: 36px; text-transform: uppercase; line-height: 1; margin: 8px 0 12px; }
+.coach-body p { color: var(--muted); font-size: 15px; margin: 0 0 16px; }
+.creds { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.creds li { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.review { margin: 28px 0 0; padding: 28px; border-left: 4px solid var(--accent); background: var(--bg-2); border-radius: 0 14px 14px 0; }
+.review .stars { color: var(--accent); letter-spacing: 3px; }
+.review blockquote { margin: 10px 0; font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3vw, 36px); line-height: 1.1; text-transform: uppercase; }
+.review figcaption { color: var(--muted); font-size: 14px; }
 
 .city-mark { font-size: 17px; letter-spacing: -.02em; }
 .city-mark i::after { display: none; }
@@ -684,10 +729,10 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
     </a>
     <ul class="nav-links">
       <li><a href="#train">Train</a></li>
-      <li><a href="#coach">Coach</a></li>
-      <li><a href="#gym">The Gym</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#coaches">Coaches</a></li>
       <li><a href="#visit">Visit</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#contact" class="btn btn-primary nav-cta">Start today</a>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
@@ -701,10 +746,10 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
   <div class="sheet-handle"></div>
   <ul>
     <li><a href="#train">Train <small>01</small></a></li>
-    <li><a href="#coach">Coach <small>02</small></a></li>
-    <li><a href="#gym">The Gym <small>03</small></a></li>
-    <li><a href="#visit">Visit <small>04</small></a></li>
-    <li><a href="#faq">FAQ <small>05</small></a></li>
+    <li><a href="#schedule">Schedule <small>02</small></a></li>
+    <li><a href="#pricing">Pricing <small>03</small></a></li>
+    <li><a href="#coaches">Coaches <small>04</small></a></li>
+    <li><a href="#visit">Visit <small>05</small></a></li>
   </ul>
   <a href="#contact" class="btn btn-primary">Start today</a>
 </nav>
@@ -734,19 +779,19 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
         <span class="line"><span>Train like</span></span>
         <span class="line"><span class="gold">a fighter</span></span>
       </h1>
-      <p class="lead hero-in d2">Boxing and fitness classes for every age and every level, coached by a former pro and Hall of Fame boxer. No experience needed. Just show up.</p>
+      <p class="lead hero-in d2">Real boxing, taught by coaches who have fought on ESPN, at the MGM Grand and at Madison Square Garden. Adult classes, kids 8–15, private lessons and a 20×20 pro ring.</p>
       <div class="hero-actions hero-in d3">
         <a href="#contact" class="btn btn-primary magnetic">Book your first class
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#visit" class="btn btn-ghost magnetic">Hours &amp; location</a>
+        <a href="#schedule" class="btn btn-ghost magnetic">See today's classes</a>
       </div>
     </div>
     <div class="wrap hero-in d4">
       <div class="hero-bar">
-        <div><span class="dot"></span><a href="tel:+18502575783"><b>Call</b> · (850) 257-5783</a></div>
-        <div><a href="#visit"><b>320 Luverne Ave</b> · Downtown Panama City</a></div>
-        <div><a href="#visit"><b>Mon–Sat</b> · from 6:00 a.m.</a></div>
+        <div><span class="dot" id="statusDot"></span><a href="#schedule" id="statusHero">Mon–Fri 6 a.m.–7 p.m. · Sat 8 a.m.–12 p.m.</a></div>
+        <div><a href="#schedule"><b>Next class</b> · <span id="nextHero">see schedule</span></a></div>
+        <div><a href="tel:+18502575783"><b>Call or text</b> · (850) 257-5783</a></div>
       </div>
     </div>
   </section>
@@ -754,36 +799,36 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
   <!-- BANDS -->
   <div class="bands" aria-hidden="true">
     <div class="band band-b"><div class="band-track" data-speed="-0.6">
-      <span>Discipline</span><span>Respect</span><span>Grit</span><span>Footwork</span><span>Heart</span>
-      <span>Discipline</span><span>Respect</span><span>Grit</span><span>Footwork</span><span>Heart</span>
+      <span>Discipline</span><span>Focus</span><span>Confidence</span><span>Footwork</span><span>Heart</span>
+      <span>Discipline</span><span>Focus</span><span>Confidence</span><span>Footwork</span><span>Heart</span>
     </div></div>
     <div class="band band-a"><div class="band-track" data-speed="0.8">
-      <span>Boxing</span><span>Fitness</span><span>All ages</span><span>All levels</span><span>Downtown Boxing Club</span>
-      <span>Boxing</span><span>Fitness</span><span>All ages</span><span>All levels</span><span>Downtown Boxing Club</span>
+      <span>Group classes</span><span>Young Boxers</span><span>Private lessons</span><span>Sparring</span><span>Open gym</span>
+      <span>Group classes</span><span>Young Boxers</span><span>Private lessons</span><span>Sparring</span><span>Open gym</span>
     </div></div>
   </div>
 
-  <!-- MANIFESTO + COACH -->
-  <section class="manifesto hexbg" id="coach">
+  <!-- STORY -->
+  <section class="manifesto hexbg">
     <div class="wrap">
       <span class="eyebrow reveal">(00) <b>Our story</b></span>
       <div class="manifesto-grid" style="margin-top:28px">
-        <p id="manifestoText">An old downtown warehouse turned into a boxing gym. A <span class="hl">gym</span> for everyone: young, old, beginner or <span class="hl">pro</span>.</p>
+        <p id="manifestoText">Since 2021, an old downtown warehouse has been home to real <span class="hl">boxing</span>. Young, old, beginner or <span class="hl">pro</span>: there is a place for you in the ring.</p>
         <div class="manifesto-side reveal">
-          <div class="ph clip"><img src="img/coach.jpg" data-fallback="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=700&q=70" alt="Coach Felix Malespin" loading="lazy" onerror="imgFallback(this)"></div>
-          <span><b style="color:var(--text)">Coach Felix Malespin</b> has lived boxing since 1994: former pro, trainer of professional fighters and inducted into the Amateur Hall of Fame in 2017.</span>
+          <div class="ph clip"><img src="img/ring.jpg" data-fallback="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=700&q=70" alt="The 20 by 20 pro boxing ring" loading="lazy" onerror="imgFallback(this)"></div>
+          <span>Every class is built on fight experience, not theory. You don't just work out here: you get better every time you step in.</span>
         </div>
       </div>
       <div class="highlights reveal-group">
-        <a class="hl-item" href="#train"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h7a4 4 0 014 4v5a3 3 0 01-3 3H8a3 3 0 01-3-3V6a2 2 0 012-2z"/><path d="M7 16v4h9v-4M5 9h6"/></svg></span>Classes</a>
-        <a class="hl-item" href="#visit"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Hours</a>
-        <a class="hl-item" href="#visit"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Location</a>
+        <a class="hl-item" href="#schedule"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Schedule</a>
+        <a class="hl-item" href="#pricing"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v12"/></svg></span>Pricing</a>
+        <a class="hl-item" href="#train"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4a3 3 0 010 6M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></span>Kids 8–15</a>
         <a class="hl-item" href="tel:+18502575783"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span>Call us</a>
       </div>
       <div class="stats reveal-group" style="margin-top:clamp(64px,8vw,110px)">
-        <div class="stat"><strong data-count="30">0<em>+</em></strong><span>years of boxing experience behind every class</span></div>
-        <div class="stat"><strong data-count="2017" data-plain>0</strong><span>the year our head coach entered the Amateur Hall of Fame</span></div>
-        <div class="stat"><strong data-count="6">0</strong><span>days a week, Monday to Saturday</span></div>
+        <div class="stat"><strong data-count="20">0<em>+</em></strong><span>national and international bouts by our head coach</span></div>
+        <div class="stat"><strong data-count="20">0<em>×20</em></strong><span>feet of pro boxing ring, plus heavy and speed bags</span></div>
+        <div class="stat"><strong data-count="4">0<em>.7★</em></strong><span>average rating from 30 reviews on the Chamber of Commerce</span></div>
       </div>
     </div>
   </section>
@@ -796,38 +841,140 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
           <span class="eyebrow reveal">(01) <b>Train</b></span>
           <h2 class="display lines"><span class="line"><span>Step into</span></span><span class="line"><span class="outline">the ring</span></span></h2>
         </div>
-        <p class="lead reveal">Learn real boxing technique or just get in the best shape of your life. Every class adapts to your age and level.</p>
+        <p class="lead reveal">Classes run 45–60 minutes and move fast: warm-up, jump rope and conditioning, then shadowboxing, technique and rounds on the bags and mitts.</p>
       </div>
       <div class="bento reveal-group">
-        <a href="#contact" class="tile tilt" data-interes="Boxing classes">
-          <div class="ph"><img src="img/boxing.jpg" data-fallback="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1400&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
-          <span class="num">01</span><span class="tag">Core</span>
-          <h3>Boxing classes</h3>
-          <p>Stance, footwork, combinations and bag work, taught by people who have done it at the highest level.</p>
+        <a href="#contact" class="tile tilt" data-interes="Adult group classes">
+          <div class="ph"><img src="img/group.jpg" data-fallback="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1400&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
+          <span class="num">01</span><span class="tag">Adults</span>
+          <h3>Group classes</h3>
+          <p>Unlimited classes with your membership, early morning, mid-morning and evening. Wednesday evenings are all conditioning.</p>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a href="#contact" class="tile tilt" data-interes="Boxing fitness">
-          <div class="ph"><img src="img/fitness.jpg" data-fallback="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
-          <span class="num">02</span><span class="tag">Cardio</span>
-          <h3>Boxing fitness</h3>
-          <p>High-energy conditioning, no sparring required.</p>
+        <a href="#contact" class="tile tilt" data-interes="Young Boxer Program (ages 8-15)">
+          <div class="ph"><img src="img/young-boxers.jpg" data-fallback="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
+          <span class="num">02</span><span class="tag">Ages 8–15</span>
+          <h3>Young Boxers</h3>
+          <p>Discipline, focus and confidence. Mon–Thu at 4 p.m.</p>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a href="#contact" class="tile tilt" data-interes="Classes for all ages">
-          <div class="ph"><img src="img/all-ages.jpg" data-fallback="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
-          <span class="num">03</span><span class="tag">Everyone</span>
-          <h3>All ages</h3>
-          <p>Young or old, first day or fight-ready.</p>
+        <a href="#contact" class="tile tilt" data-interes="Private lessons">
+          <div class="ph"><img src="img/private.jpg" data-fallback="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
+          <span class="num">03</span><span class="tag">1-on-1</span>
+          <h3>Private lessons</h3>
+          <p>Solo or with a partner, at your pace.</p>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a href="#contact" class="tile tilt" data-interes="Membership and prices">
-          <div class="ph"><img src="img/membership.jpg" data-fallback="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1600&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
-          <span class="num">04</span><span class="tag">Join</span>
-          <h3>Memberships</h3>
-          <p>Call or text us for current rates and class options. Wellhub members welcome.</p>
+        <a href="#contact" class="tile tilt" data-interes="Sparring and competition">
+          <div class="ph"><img src="img/sparring.jpg" data-fallback="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1600&q=70" alt="" loading="lazy" onerror="imgFallback(this)"></div>
+          <span class="num">04</span><span class="tag">Fridays</span>
+          <h3>Sparring &amp; amateur team</h3>
+          <p>Friday sparring at 6 p.m. and an amateur team led by a USA Boxing certified coach, for those who want to compete.</p>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow reveal">(02) <b>Schedule</b></span>
+          <h2 class="display lines"><span class="line"><span>Find your</span></span><span class="line"><span class="gold">round</span></span></h2>
+        </div>
+        <div class="status reveal"><span class="dot" id="statusDot2"></span><span id="statusText">Mon–Fri 6 a.m.–7 p.m. · Sat 8 a.m.–12 p.m.</span></div>
+      </div>
+      <div class="week reveal-group" id="week"></div>
+      <p class="sched-note reveal">Class times can change on holidays. Call or text to confirm before your first visit.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow reveal">(03) <b>Pricing</b></span>
+          <h2 class="display lines"><span class="line"><span>Straight</span></span><span class="line"><span class="outline">to the point</span></span></h2>
+        </div>
+        <p class="lead reveal">No contracts. Memberships renew every 4 weeks and you can pause or cancel anytime.</p>
+      </div>
+      <div class="plans three reveal-group">
+        <article class="plan pop">
+          <h3>Membership</h3>
+          <p class="desc">Everything you need to train like a fighter.</p>
+          <div class="price"><span class="amt">$100</span><span class="per">/ 4 weeks</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Unlimited group classes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>20×20 pro boxing ring</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Heavy bags, speed bags and weights</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Open gym during opening hours</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" data-plan="Membership ($100 / 4 weeks)">Join now</a>
+        </article>
+        <article class="plan">
+          <h3>Family &amp; groups</h3>
+          <p class="desc">Train together and save.</p>
+          <div class="price"><span class="small">as low as</span><span class="amt">$60</span><span class="per">/ person</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Same benefits as the membership</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Great for parents and kids</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Pause or cancel anytime</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-plan="Family or group rate">Ask about group rates</a>
+        </article>
+        <article class="plan">
+          <h3>Private lessons</h3>
+          <p class="desc">One-on-one coaching at your pace.</p>
+          <div class="price"><span class="amt">$50</span><span class="per">/ session</span></div>
+          <ul class="price-list">
+            <li><span>Couples (2 people)</span><b>$80</b></li>
+            <li><span>5-pack</span><b>$205</b></li>
+            <li><span>10-pack <em>most popular</em></span><b>$410</b></li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-plan="Private lessons">Book a private</a>
+        </article>
+      </div>
+      <p class="sched-note reveal">Private lesson packs are valid for one year from purchase. Wellhub members welcome.</p>
+    </div>
+  </section>
+
+  <!-- COACHES -->
+  <section id="coaches" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow reveal">(04) <b>Coaches</b></span>
+          <h2 class="display lines"><span class="line"><span>Learn from</span></span><span class="line"><span class="gold">real fighters</span></span></h2>
+        </div>
+      </div>
+      <div class="coach-grid reveal-group">
+        <article class="coach-card">
+          <div class="ph clip"><img src="img/coach-chico.jpg" data-fallback="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=70" alt="Coach Quincy Chico Lavallais" loading="lazy" onerror="imgFallback(this)"></div>
+          <div class="coach-body">
+            <span class="role">Head coach &amp; co-owner</span>
+            <h3>Quincy “Chico” Lavallais</h3>
+            <p>Started boxing at 16 and went on to more than 20 bouts on national and international stages, with fights broadcast on ESPN from the MGM Grand and Madison Square Garden.</p>
+            <ul class="creds"><li>20+ bouts</li><li>ESPN</li><li>MGM Grand</li><li>Madison Square Garden</li></ul>
+          </div>
+        </article>
+        <article class="coach-card">
+          <div class="ph clip"><img src="img/coach-stacie.jpg" data-fallback="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=70" alt="Coach Stacie" loading="lazy" onerror="imgFallback(this)"></div>
+          <div class="coach-body">
+            <span class="role">Amateur team coach</span>
+            <h3>Coach Stacie</h3>
+            <p>Certified USA Boxing coach and judge/referee. Leads the amateur team, known for her technical eye, motivation and her ability to connect with boxers of every age.</p>
+            <ul class="creds"><li>USA Boxing certified</li><li>Judge / referee</li><li>Amateur team</li></ul>
+          </div>
+        </article>
+      </div>
+      <figure class="review reveal">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>“This boxing gym is the real deal. There's nothing better than training with a coach who's actually been in the ring and fought on a worldwide televised broadcast.”</blockquote>
+        <figcaption>Review on Yelp</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -835,7 +982,7 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
   <section class="hscroll" id="gym" style="background:var(--bg-2);border-block:1px solid var(--line)">
     <div class="hscroll-sticky">
       <div class="wrap hscroll-head">
-        <span class="eyebrow reveal">(02) <b>The gym</b></span>
+        <span class="eyebrow reveal">(05) <b>The gym</b></span>
         <h2 class="display lines"><span class="line"><span>Inside the</span></span><span class="line"><span class="gold">warehouse</span></span></h2>
       </div>
       <div class="hscroll-track" id="hsTrack">
@@ -845,57 +992,39 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
           <p>From an old storage building to downtown's boxing home. Take a look →</p>
         </div>
         <div class="space">
-          <div class="ph"><img src="img/gym-1.jpg" data-fallback="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1000&q=70" alt="Heavy bags" loading="lazy" onerror="imgFallback(this)"></div>
-          <h3>Bag room</h3><p>Heavy bags and space to move.</p>
+          <div class="ph"><img src="img/gym-ring.jpg" data-fallback="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1000&q=70" alt="Pro boxing ring" loading="lazy" onerror="imgFallback(this)"></div>
+          <h3>20×20 pro ring</h3><p>Full-size ring for technique and sparring.</p>
         </div>
         <div class="space">
-          <div class="ph"><img src="img/gym-2.jpg" data-fallback="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1000&q=70" alt="Training floor" loading="lazy" onerror="imgFallback(this)"></div>
-          <h3>Training floor</h3><p>Where the classes happen.</p>
+          <div class="ph"><img src="img/gym-bags.jpg" data-fallback="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1000&q=70" alt="Heavy bags" loading="lazy" onerror="imgFallback(this)"></div>
+          <h3>Heavy &amp; speed bags</h3><p>Rounds on the bags in every class.</p>
         </div>
         <div class="space">
-          <div class="ph"><img src="img/gym-3.jpg" data-fallback="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1000&q=70" alt="Locker rooms" loading="lazy" onerror="imgFallback(this)"></div>
-          <h3>Locker rooms &amp; parking</h3><p>Change, train, go.</p>
+          <div class="ph"><img src="img/gym-weights.jpg" data-fallback="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1000&q=70" alt="Weights" loading="lazy" onerror="imgFallback(this)"></div>
+          <h3>Weights &amp; equipment</h3><p>Strength work and open gym.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW TO START -->
-  <section id="start">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow reveal">(03) <b>How to start</b></span>
-          <h2 class="display lines"><span class="line"><span>Three rounds</span></span><span class="line"><span class="gold">to get going</span></span></h2>
-        </div>
-        <p class="lead reveal">No experience, no gear, no problem. We will walk you through everything.</p>
-      </div>
-      <div class="steps reveal-group">
-        <div class="step"><span class="n gold">01</span><b>Call or text</b><p>Tell us your goal and we will find the right class time for you.</p></div>
-        <div class="step"><span class="n gold">02</span><b>Come in</b><p>Meet the coaches, see the gym and learn the basics.</p></div>
-        <div class="step"><span class="n gold">03</span><b>Keep showing up</b><p>Get fitter, sharper and stronger every week.</p></div>
       </div>
     </div>
   </section>
 
   <!-- VISIT -->
-  <section id="visit" style="padding-top:0">
+  <section id="visit">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <span class="eyebrow reveal">(04) <b>Visit</b></span>
+          <span class="eyebrow reveal">(06) <b>Visit</b></span>
           <h2 class="display lines"><span class="line"><span>Find us</span></span><span class="line"><span class="gold">downtown</span></span></h2>
         </div>
         <div class="lead reveal" style="color:var(--text)">
-          <b>Mon–Fri</b> · 6:00 a.m.–12:00 p.m. &amp; 4:30–7:00 p.m.<br>
-          <b>Saturday</b> · 6:00 a.m.–12:00 p.m.<br>
+          <b>Mon–Fri</b> · 6:00 a.m.–7:00 p.m.<br>
+          <b>Saturday</b> · 8:00 a.m.–12:00 p.m.<br>
           <span style="color:var(--muted)">Sunday · Closed</span>
         </div>
       </div>
       <div class="map reveal" style="min-height:440px">
         <iframe title="Map: Downtown Boxing Club, 320 Luverne Ave, Panama City, FL" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=320+Luverne+Ave,+Panama+City,+FL+32401&z=16&output=embed"></iframe>
         <div class="map-card">
-          <div><b>320 Luverne Ave</b><span>Panama City, FL 32401</span></div>
+          <div><b>320 Luverne Ave</b><span>Panama City, FL 32401 · Parking & changing rooms</span></div>
           <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=320+Luverne+Ave+Panama+City+FL+32401" target="_blank" rel="noopener">Get directions</a>
         </div>
       </div>
@@ -906,29 +1035,29 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
   <section id="faq" style="padding-top:0">
     <div class="wrap faq-grid">
       <div>
-        <span class="eyebrow reveal">(05) <b>FAQ</b></span>
+        <span class="eyebrow reveal">(07) <b>FAQ</b></span>
         <h2 class="display lines"><span class="line"><span>Before your</span></span><span class="line"><span class="gold">first class</span></span></h2>
       </div>
       <div class="faq reveal-group">
         <details>
           <summary>I have never boxed. Can I join?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p>Absolutely. Downtown Boxing Club is a gym for everyone. Coaches adapt every class to your level, from your very first day.</p>
+          <p>Yes. Downtown Boxing Club is for all skill levels. Group classes start with a warm-up and build up to technique, so beginners fit right in.</p>
         </details>
         <details>
-          <summary>Do I have to spar?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p>No. Many members train only for fitness. Sparring is always optional.</p>
+          <summary>What ages is the Young Boxer Program for?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Kids 8 to 15. Classes are Monday to Thursday at 4 p.m. and focus on discipline, focus and confidence.</p>
         </details>
         <details>
-          <summary>What are your hours?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p>Monday to Friday 6:00 a.m.–12:00 p.m. and 4:30–7:00 p.m., Saturday 6:00 a.m.–12:00 p.m. Call ahead to confirm class times.</p>
+          <summary>Can I pause or cancel my membership?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Yes. Memberships auto-renew every 4 weeks and you can pause or cancel anytime.</p>
         </details>
         <details>
-          <summary>How much is a membership?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p>Call or text (850) 257-5783 and we will share current rates and options. Wellhub members are welcome too.</p>
+          <summary>When is sparring?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Sparring is on Fridays at 6 p.m. Talk to the coaches first so they can match you with the right partner.</p>
         </details>
         <details>
-          <summary>Is there parking?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <p>Yes, there is parking at the gym, plus changing rooms inside.</p>
+          <summary>Do you take Wellhub?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Yes, Downtown Boxing Club is a Wellhub partner. Check your plan in the Wellhub app.</p>
         </details>
       </div>
     </div>
@@ -941,7 +1070,7 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
         <div class="ph"><img src="img/contact.jpg" data-fallback="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=1600&q=60" alt="" loading="lazy" onerror="imgFallback(this)"></div>
         <div>
           <h2 class="display lines"><span class="line"><span>Your first</span></span><span class="line"><span>round starts</span></span><span class="line"><span>here.</span></span></h2>
-          <p class="lead">Send us a text and we will reply with class times, rates and everything you need to get started.</p>
+          <p class="lead">Send us a text and we will reply with the best class for you and everything you need to get started.</p>
           <ul class="contact-list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><a href="#visit">320 Luverne Ave, Panama City, FL</a></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><a href="tel:+18502575783">(850) 257-5783</a></li>
@@ -954,10 +1083,12 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
           </label>
           <label>I'm interested in
             <select name="interes" id="interesSelect">
-              <option>Boxing classes</option>
-              <option>Boxing fitness</option>
-              <option>Classes for all ages</option>
-              <option>Membership and prices</option>
+              <option>Adult group classes</option>
+              <option>Young Boxer Program (ages 8-15)</option>
+              <option>Private lessons</option>
+              <option>Sparring and competition</option>
+              <option>Membership ($100 / 4 weeks)</option>
+              <option>Family or group rate</option>
             </select>
           </label>
           <label>When do you want to start?
@@ -984,9 +1115,9 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
       <a href="#top" class="logo"><span class="city-mark" aria-hidden="true"><i>DB</i></span><span class="logo-text" style="color:var(--text)">Downtown<small>Boxing Club</small></span></a>
       <nav aria-label="Footer">
         <a href="#train">Train</a>
-        <a href="#coach">Coach</a>
-        <a href="#gym">The Gym</a>
-        <a href="#visit">Visit</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#coaches">Coaches</a>
         <a href="https://www.facebook.com/downtownboxingclubpc/" target="_blank" rel="noopener">Facebook</a>
       </nav>
     </div>
@@ -1238,6 +1369,67 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 calc(28px + env(safe
     var msg = 'Hi Downtown Boxing Club! This is ' + nombre + '. I\'m interested in: ' + f.interes.value + '. When I want to start: ' + f.cuando.value + '.';
     window.location.href = 'sms:' + PHONE + '?&body=' + encodeURIComponent(msg);
   });
+})();
+</script>
+<script>
+/* Weekly schedule + live "open now / next class" in Panama City time (America/Chicago) */
+(function () {
+  var WEEK = [
+    { d: 'Mon', n: 1, cls: [['6:15', 'a.m.', 'Adult'], ['8:00', 'a.m.', 'Adult'], ['4:00', 'p.m.', 'Young Boxers'], ['5:30', 'p.m.', 'Adult']] },
+    { d: 'Tue', n: 2, cls: [['6:15', 'a.m.', 'Adult'], ['8:00', 'a.m.', 'Adult'], ['4:00', 'p.m.', 'Young Boxers'], ['5:30', 'p.m.', 'Adult']] },
+    { d: 'Wed', n: 3, cls: [['6:15', 'a.m.', 'Adult'], ['8:00', 'a.m.', 'Adult'], ['4:00', 'p.m.', 'Young Boxers'], ['5:30', 'p.m.', 'Conditioning']] },
+    { d: 'Thu', n: 4, cls: [['6:15', 'a.m.', 'Adult'], ['8:00', 'a.m.', 'Adult'], ['4:00', 'p.m.', 'Young Boxers'], ['5:30', 'p.m.', 'Adult']] },
+    { d: 'Fri', n: 5, cls: [['6:15', 'a.m.', 'Adult'], ['8:00', 'a.m.', 'Adult'], ['6:00', 'p.m.', 'Sparring']] },
+    { d: 'Sat', n: 6, cls: [['8:15', 'a.m.', 'Adult'], ['9:15', 'a.m.', 'Adult']] },
+    { d: 'Sun', n: 0, cls: [] }
+  ];
+  var OPEN = { 0: null, 1: [6, 19], 2: [6, 19], 3: [6, 19], 4: [6, 19], 5: [6, 19], 6: [8, 12] };
+  function toH(t, ap) { var p = t.split(':'), h = +p[0] % 12 + (ap === 'p.m.' ? 12 : 0); return h + (+p[1]) / 60; }
+  function now() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', hour12: false, weekday: 'short', hour: 'numeric', minute: 'numeric' }).formatToParts(new Date());
+      var m = {}; parts.forEach(function (p) { m[p.type] = p.value; });
+      return { day: { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[m.weekday], h: (+m.hour % 24) + (+m.minute) / 60 };
+    } catch (e) { var d = new Date(); return { day: d.getDay(), h: d.getHours() + d.getMinutes() / 60 }; }
+  }
+  var week = document.getElementById('week');
+  week.innerHTML = WEEK.map(function (w) {
+    return '<div class="day" data-n="' + w.n + '"><div class="dname">' + w.d + '<span class="today-tag">Today</span></div>' +
+      (w.cls.length ? w.cls.map(function (c) {
+        return '<div class="cls" data-h="' + toH(c[0], c[1]) + '"><b>' + c[0] + '<small> ' + c[1] + '</small></b><span>' + c[2] + '</span></div>';
+      }).join('') : '<div class="cls closed"><span>Closed</span></div>') + '</div>';
+  }).join('');
+
+  function paint() {
+    var n = now(), o = OPEN[n.day], open = !!o && n.h >= o[0] && n.h < o[1];
+    var fmt = function (h) { var hh = Math.floor(h), mm = Math.round((h - hh) * 60), ap = hh >= 12 ? 'p.m.' : 'a.m.'; return (hh % 12 || 12) + (mm ? ':' + String(mm).padStart(2, '0') : '') + ' ' + ap; };
+    var status = open ? 'Open now · closes at ' + fmt(o[1]) : 'Closed now';
+    if (!open) {
+      if (o && n.h < o[0]) status += ' · opens today at ' + fmt(o[0]);
+      else { for (var i = 1; i <= 7; i++) { var dd = (n.day + i) % 7; if (OPEN[dd]) { status += ' · opens ' + (i === 1 ? 'tomorrow' : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dd]) + ' at ' + fmt(OPEN[dd][0]); break; } } }
+    }
+    ['statusDot', 'statusDot2'].forEach(function (id) { document.getElementById(id).classList.toggle('closed', !open); });
+    document.getElementById('statusHero').textContent = status;
+    document.getElementById('statusText').textContent = status;
+    var next = null;
+    document.querySelectorAll('#week .day').forEach(function (el) {
+      var isToday = +el.dataset.n === n.day;
+      el.classList.toggle('today', isToday);
+      el.querySelectorAll('.cls').forEach(function (c) {
+        c.classList.remove('next');
+        if (isToday && !next && c.dataset.h && +c.dataset.h > n.h) next = c;
+      });
+    });
+    if (next) { next.classList.add('next'); document.getElementById('nextHero').textContent = 'today ' + next.querySelector('b').textContent + ' · ' + next.querySelector('span').textContent; }
+    else {
+      for (var j = 1; j <= 7; j++) {
+        var nd = (n.day + j) % 7, w = WEEK.filter(function (x) { return x.n === nd; })[0];
+        if (w.cls.length) { document.getElementById('nextHero').textContent = (j === 1 ? 'tomorrow ' : w.d + ' ') + w.cls[0][0] + ' ' + w.cls[0][1] + ' · ' + w.cls[0][2]; break; }
+      }
+    }
+  }
+  paint();
+  setInterval(paint, 60000);
 })();
 </script>
 </body>
