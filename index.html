@@ -78,6 +78,7 @@
     --soil-soft: #F3E6DD;
     --gold: #A98A4E;
     --white: #FBF9F4;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -210,7 +211,7 @@
     text-shadow: 0 1px 4px rgba(0,0,0,0.75);
     margin-bottom: 16px;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
+    animation: rise 0.7s var(--ease-out) forwards;
     animation-delay: 0.05s;
   }
 
@@ -221,7 +222,7 @@
     text-shadow: 0 2px 10px rgba(0,0,0,0.55);
     margin-bottom: 16px;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
+    animation: rise 0.7s var(--ease-out) forwards;
     animation-delay: 0.15s;
   }
 
@@ -233,14 +234,14 @@
     text-shadow: 0 1px 4px rgba(0,0,0,0.75);
     margin-bottom: 30px;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
+    animation: rise 0.7s var(--ease-out) forwards;
     animation-delay: 0.25s;
   }
 
   .cta-row{
     display:flex; gap:12px; flex-wrap:wrap;
     opacity: 0;
-    animation: rise 0.7s ease forwards;
+    animation: rise 0.7s var(--ease-out) forwards;
     animation-delay: 0.35s;
   }
 
@@ -265,7 +266,9 @@
     background: transparent;
     color: var(--white);
     cursor:pointer;
+    transition: transform 160ms var(--ease-out);
   }
+  .btn:active{ transform: scale(0.97); }
   .btn svg{ width:16px; height:16px; }
   .btn-primary{ background: var(--white); color: var(--ink); }
   .btn-primary:hover{ background: #E9E4D8; }
@@ -315,8 +318,9 @@
     font-size: 13px;
     cursor:pointer;
     color: var(--ink-soft);
-    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, transform 160ms var(--ease-out);
   }
+  .filter-chip:active{ transform: scale(0.97); }
   .filter-chip:hover{ border-color: var(--gold); color: var(--ink); }
   .filter-chip.active{
     background: var(--ink);
@@ -332,6 +336,19 @@
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 20px;
+  }
+
+  .lotes > *{ animation: lote-in 220ms var(--ease-out) backwards; }
+  .lotes > :nth-child(2){ animation-delay: 40ms; }
+  .lotes > :nth-child(3){ animation-delay: 80ms; }
+  .lotes > :nth-child(4){ animation-delay: 120ms; }
+  .lotes > :nth-child(5){ animation-delay: 160ms; }
+  .lotes > :nth-child(n+6){ animation-delay: 200ms; }
+  @keyframes lote-in{
+    from{ opacity:0; transform: translateY(8px); }
+  }
+  @keyframes fade-in{
+    from{ opacity:0; }
   }
 
   .lote-card{
@@ -371,11 +388,15 @@
   .lote-card.reservado{ border-left-color: var(--soil); }
   .lote-card.vendido{ border-left-color: var(--ink-soft); opacity: 0.78; }
 
-  .lote-card:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px -12px rgba(29,43,58,0.28);
+  @media (hover: hover) and (pointer: fine){
+    .lote-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px -12px rgba(29,43,58,0.28);
+    }
+    .lote-card:hover .lote-photo{ transform: scale(1.06); }
+    .plano-hero-img-btn:hover img{ transform: scale(1.02); }
+    .wa-float:hover{ transform: translateY(-2px); background:#3d4d30; }
   }
-  .lote-card:hover .lote-photo{ transform: scale(1.06); }
 
   .lote-top{
     display:flex;
@@ -460,8 +481,9 @@
     font-size: 14px;
     font-weight:600;
     border:none;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, transform 160ms var(--ease-out);
   }
+  .whatsapp-btn:active{ transform: scale(0.97); }
   .whatsapp-btn svg{ width:15px; height:15px; }
   .whatsapp-btn:hover{ background: #3d4d30; }
 
@@ -543,7 +565,6 @@
     background:#f4f1e8;
     transition: transform 0.3s ease;
   }
-  .plano-hero-img-btn:hover img{ transform: scale(1.02); }
   .plano-hero-zoom{
     position:absolute;
     right:12px;
@@ -565,18 +586,33 @@
     position:fixed;
     inset:0;
     background: rgba(29,43,58,0.94);
-    display:none;
+    display:flex;
     align-items:center;
     justify-content:center;
     padding: 32px 20px;
     z-index: 300;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition: opacity 150ms var(--ease-out), visibility 0s linear 150ms;
   }
-  .lightbox.open{ display:flex; }
+  .lightbox.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transition: opacity 200ms var(--ease-out), visibility 0s;
+  }
   .lightbox img{
     max-width:100%;
     max-height:100%;
     border-radius:6px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: scale(0.96);
+    transition: transform 150ms var(--ease-out);
+  }
+  .lightbox.open img{
+    transform: scale(1);
+    transition: transform 250ms var(--ease-out);
   }
   .lightbox-close{
     position:absolute;
@@ -596,6 +632,7 @@
     justify-content:center;
   }
   .lightbox-close:hover{ background: rgba(255,255,255,0.24); }
+  .lightbox-close:active{ transform: scale(0.94); }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -732,12 +769,12 @@
   .faq-a{
     max-height:0;
     overflow:hidden;
-    transition: max-height 0.25s ease, padding 0.25s ease;
+    transition: max-height 0.3s var(--ease-out), padding 0.3s var(--ease-out);
     font-size: 14px;
     color: var(--ink-soft);
     line-height:1.6;
   }
-  .faq-item.open .faq-a{ max-height:220px; padding-bottom: 20px; }
+  .faq-item.open .faq-a{ max-height:600px; padding-bottom: 20px; }
 
   /* ---------- MAPA ---------- */
   .map-wrap{
@@ -764,9 +801,9 @@
     display:flex; align-items:center; justify-content:center;
     box-shadow: 0 8px 20px -6px rgba(29,43,58,0.45);
     text-decoration:none;
-    transition: transform 0.15s ease, background 0.15s ease;
+    transition: transform 160ms var(--ease-out), background 0.15s ease;
   }
-  .wa-float:hover{ transform: translateY(-2px); background:#3d4d30; }
+  .wa-float:active{ transform: scale(0.94); }
   .wa-float svg{ width:26px; height:26px; }
 
   /* ---------- TRAYECTORIA ---------- */
@@ -798,6 +835,13 @@
     margin: 6px 0 0 0;
     text-transform: none;
   }
+
+  /* Movimiento reducido: más suave, no cero (va al final para ganar sobre las reglas anteriores) */
+  @media (prefers-reduced-motion: reduce){
+    .lotes > *{ animation-name: fade-in; animation-delay: 0ms !important; }
+    .lightbox img, .lightbox.open img{ transform: none; }
+    .btn:active, .whatsapp-btn:active, .filter-chip:active, .lightbox-close:active, .wa-float:active{ transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -828,7 +872,7 @@
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <p class="hero-subtitle" style="margin:0 0 2px; opacity:0; animation: rise 0.7s ease forwards; animation-delay: 0.05s;">Barrios</p>
+    <p class="hero-subtitle" style="margin:0 0 2px; opacity:0; animation: rise 0.7s var(--ease-out) forwards; animation-delay: 0.05s;">Barrios</p>
     <h1>Don Atilio</h1>
     <div class="kicker" style="margin-top:6px;">DESARROLLOS URBANOS</div>
     <p>Desarrollamos, gestionamos y comercializamos Barrios y lotes urbanos en Gonnet y zonas Aledañas.</p>
@@ -1194,7 +1238,8 @@
   }
   function closePlanoLightbox() {
     planoLightbox.classList.remove('open');
-    planoLightboxImg.src = '';
+    // Vaciar la imagen recién cuando terminó el fundido de salida
+    setTimeout(() => { if (!planoLightbox.classList.contains('open')) planoLightboxImg.src = ''; }, 160);
   }
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.plano-hero-img-btn');
