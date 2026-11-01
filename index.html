@@ -945,7 +945,7 @@
   <div class="lotes" id="l4490-grid" style="display:none; margin-top:8px; margin-bottom:28px;"></div>
 
   <button id="toggle-l4502b" class="btn btn-primary" style="display:block; margin:0 auto;" aria-expanded="false" aria-controls="l4502b-grid">
-    Loteo 4 y 502B — VENDIDOS
+    Loteo 4 y 502B — Lotes disponibles
   </button>
   <div class="lotes" id="l4502b-grid" style="display:none; margin-top:8px; margin-bottom:8px;"></div>
 </div>
@@ -1465,30 +1465,56 @@
     cont.dataset.rendered = "1";
   }
 
-  // --- Loteo 4 y 502B, vendido (5 unidades) ---
-  const l4502bLotes = ['1','2','3','4','5'].map(num => ({
-    id: `LOTE ${num}`,
-    titulo: `Lote ${num}, Loteo 4 y 502B`,
-    direccion: "Calle 4 y 502B, Gonnet"
+  // --- Loteo 4 y 502B (mixto: 1 disponible + 4 vendidos) ---
+  const l4502bLotes = [
+    {num:'1', estado:'vendido'},
+    {num:'2', estado:'vendido'},
+    {num:'3', estado:'vendido'},
+    {num:'4', estado:'disponible', superficie:'435,90 m²', frente:'11,25 x 38,75 m', direccion:'Calle 4 entre 502A y 502B, Villa Castells, Gonnet'},
+    {num:'5', estado:'vendido'}
+  ].map(l => ({
+    id: `LOTE ${l.num}`,
+    titulo: `Lote ${l.num}, Loteo 4 y 502B`,
+    direccion: l.direccion || "Calle 4 y 502B, Gonnet",
+    superficie: l.superficie,
+    frente: l.frente,
+    estado: l.estado
   }));
   function renderL4502b() {
     const cont = document.getElementById('l4502b-grid');
     if (!cont || cont.dataset.rendered) return;
-    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B", "-34.872890,-58.002188") + l4502bLotes.map(l => `
-      <div class="lote-card vendido">
+    cont.innerHTML = planoHeroHTML(L4502B_PHOTO, "Plano del Loteo 4 y 502B", "Loteo 4 y 502B", "-34.872890,-58.002188") + l4502bLotes.map(l => {
+      const vendido = l.estado === 'vendido';
+      const estadoHTML = vendido
+        ? `<div class="lote-precio">VENDIDO</div>`
+        : `<div class="lote-precio-arrow" aria-label="Consultá el precio por WhatsApp" title="Consultá el precio por WhatsApp">
+             <span>Precio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+           </div>`;
+      const ctaText = vendido ? 'Consultar por otros lotes' : 'Consultar por WhatsApp';
+      const waMsg = vendido
+        ? `Hola! Vi que el ${l.titulo} ya está vendido. ¿Tienen algún lote similar disponible?`
+        : `Hola! Vi que el ${l.titulo} está disponible. ¿Me pasás precio y medidas?`;
+      const metaHTML = l.superficie ? `
+          <div class="lote-meta">
+            <div>Superficie<span class="meta-val">${l.superficie}</span></div>
+            <div>Frente<span class="meta-val">${l.frente}</span></div>
+          </div>` : '';
+      return `
+      <div class="lote-card${vendido ? ' vendido' : ''}">
         <div class="lote-head">
           <div class="lote-top">
             <div class="lote-id">${l.id}</div>
-            <span class="lote-estado vendido">VENDIDO</span>
+            <span class="lote-estado${vendido ? ' vendido' : ''}">${vendido ? 'VENDIDO' : 'DISPONIBLE'}</span>
           </div>
           <h3>${l.titulo}</h3>
           <div class="lote-zona">${pinIconSVG}${l.direccion}</div>
         </div>
-        <div class="lote-body">
-          <div class="lote-precio">VENDIDO</div>
-          <a class="whatsapp-btn" href="${waLinkHistorial({titulo: l.titulo})}" target="_blank" rel="noopener">${waIconSVG}Consultar por otros lotes</a>
+        <div class="lote-body">${metaHTML}
+          ${estadoHTML}
+          <a class="whatsapp-btn" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">${waIconSVG}${ctaText}</a>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
     cont.dataset.rendered = "1";
   }
 
